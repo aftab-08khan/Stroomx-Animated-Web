@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en" class="ld-on">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>StroomX — Let your business flow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="lg" viewBox="80 268 1225 232">
+        <path
+          d="M88.3,420.7v-34.1h98.5c5.1,0,8.7-3.2,8.7-8.9s-3.6-9.1-8.7-9.1h-58c-24.5,0-42.2-16.2-42.2-39.7s17.6-39.9,42.2-39.9h100.2v33.9h-98.5c-5.1,0-8.5,3-8.5,8.7s3.4,8.9,8.5,8.9h58c24.7,0,42.4,16.4,42.4,39.9s-17.6,40.3-42.4,40.3h-100.2Z"
+        />
+        <path d="M289.7,420.7v-97.9h-48.5v-33.9h132.4v33.9h-48.5v97.9h-35.5Z" />
+        <path
+          d="M491.8,420.7l-26.4-33.5h-31.2v-30.8h45.4c9.7,0,16.6-6.7,16.6-16.8s-6.9-16.8-16.6-16.8h-55.5v97.9h-35.3v-131.8h90.8c30.2,0,52.1,19.9,52.1,49.3s-10.5,35.9-27,43.8l33.2,38.7h-46.2Z"
+        />
+        <path
+          d="M641.3,432.2h-19.1c-47,0-81.2-32.5-81.2-77.3s34.1-77.3,81.2-77.3h19.1c46.9,0,81,32.5,81,77.3s-34.1,77.3-81,77.3ZM622.3,300.4c-34.9,0-58.3,21.9-58.3,54.5s23.4,54.5,58.3,54.5h19.1c34.8,0,58.1-21.9,58.1-54.5s-23.4-54.5-58.1-54.5h-19.1Z"
+        />
+        <path
+          d="M828.7,432.2h-19.1c-47,0-81.2-32.5-81.2-77.3s34.1-77.3,81.2-77.3h19.1c46.9,0,81,32.5,81,77.3s-34.1,77.3-81,77.3ZM809.6,300.4c-34.9,0-58.3,21.9-58.3,54.5s23.4,54.5,58.3,54.5h19.1c34.8,0,58.1-21.9,58.1-54.5s-23.4-54.5-58.1-54.5h-19.1Z"
+        />
+        <path
+          d="M1074.9,420.7l-19.5-84.7-22.9,72.2c-2.4,8.5-8.3,12.6-16.6,12.6h-10.7c-8.5,0-14.2-4.1-16.6-12.6l-22.9-73.6-19.5,86.2h-35.1l26.8-116.8c2.2-10.9,8.3-15,17.2-15h14.8c8.3,0,14.2,4.1,16.8,12.8l23.9,78.9,23.7-78.9c2.6-8.7,8.3-12.8,16.6-12.8h14.8c8.9,0,15,4.1,17.4,15l27,116.8h-35.3Z"
+        />
+        <path
+          d="M1234.5,420.7l-38.9-45.4-37.9,45.4h-42.2l57.8-68.7-53.1-63.1h44.8l33.5,39.9,33.7-39.9h42.2l-53.3,63.3,58.4,68.5h-44.8Z"
+        />
+        <polygon
+          points="793.9 490.4 793.9 456.6 661.5 456.6 661.5 490.4 709.9 490.4 709.9 490.5 745.4 490.5 745.4 490.4 793.9 490.4"
+        />
+      </symbol>
+    </svg>
+    <noscript
+      ><style>
+        #ld {
+          display: none;
+        }
+        html.ld-on,
+        html.ld-on body {
+          overflow: auto;
+        }
+      </style></noscript
+    >
+    <div id="ld" role="status" aria-live="polite" aria-label="Loading StroomX">
+      <div class="ld-b ld-b1"></div>
+      <div class="ld-b ld-b2"></div>
+      <div class="ld-top">
+        <svg viewBox="0 0 1225 232" fill="#ff4000" aria-hidden="true">
+          <use href="#lg" /></svg
+        ><span>Let your business flow</span>
+      </div>
+      <div class="ld-bot">
+        <p id="ldt">Mapping the current</p>
+        <div class="ld-num"><span id="ldn">0</span><sup>%</sup></div>
+        <div class="ld-bar"><i id="ldb"></i></div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        var q = [],
+          done = false;
+        window.stxReady = function (f) {
+          done ? f() : q.push(f);
+        };
+        var ld = document.getElementById("ld"),
+          n = document.getElementById("ldn"),
+          b = document.getElementById("ldb"),
+          t = document.getElementById("ldt"),
+          DUR = 3700,
+          HOLD = 350,
+          MSG = [
+            [0, "Mapping the current"],
+            [28, "Connecting people & data"],
+            [58, "Smoothing the flow"],
+            [88, "Almost there"],
+          ],
+          mi = 0,
+          t0 = null;
+        function ease(x) {
+          return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+        }
+        function fin() {
+          document.documentElement.classList.remove("ld-on");
+          ld.classList.add("out");
+          done = true;
+          q.forEach(function (f) {
+            try {
+              f();
+            } catch (e) {}
+          });
+          setTimeout(function () {
+            if (ld.parentNode) ld.parentNode.removeChild(ld);
+          }, 1100);
+        }
+        function tick(ts) {
+          if (t0 === null) t0 = ts;
+          var x = Math.min((ts - t0) / DUR, 1),
+            p = ease(x),
+            v = Math.round(p * 100);
+          n.textContent = v;
+          b.style.transform = b.style.webkitTransform = "scaleX(" + p + ")";
+          if (mi < MSG.length - 1 && v >= MSG[mi + 1][0]) {
+            mi++;
+            t.style.opacity = 0;
+            (function (m) {
+              setTimeout(function () {
+                t.textContent = m;
+                t.style.opacity = 1;
+              }, 220);
+            })(MSG[mi][1]);
+          }
+          if (x < 1) requestAnimationFrame(tick);
+          else setTimeout(fin, HOLD);
+        }
+        requestAnimationFrame(tick);
+      })();
+    </script>
+    <div class="progress"></div>
+    <canvas id="cur" aria-hidden="true"></canvas>
+    <nav>
+      <a class="logo" href="#" aria-label="StroomX home"
+        ><svg
+          viewBox="0 0 1225 232"
+          role="img"
+          aria-label="StroomX"
+          fill="#ff4000"
+        >
+          <use href="#lg" /></svg></a
+      ><a class="pill" href="#contact">Let's talk</a>
+    </nav>
+
+    <header class="hero">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
+      <div class="wrap">
+        <div class="eyebrow">Stroom — Dutch for "flow"</div>
+        <h1 id="hero-title">Where ideas find their flow.</h1>
+        <p class="hero-p">
+          StroomX turns scattered work into one smooth current — connecting
+          people, data and decisions so your business moves effortlessly.
+        </p>
+        <div class="hero-cta">
+          <a class="pill" href="#story">Start the story</a
+          ><a class="ghost" href="#services">What we do</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="marquee">
+      <div id="mq">
+        <span>Strategy</span><em>✦</em><span>Design</span><em>✦</em
+        ><span>Automation</span><em>✦</em><span>Data</span><em>✦</em
+        ><span>Growth</span><em>✦</em><span>Strategy</span><em>✦</em
+        ><span>Design</span><em>✦</em><span>Automation</span><em>✦</em
+        ><span>Data</span><em>✦</em><span>Growth</span><em>✦</em>
+      </div>
+    </div>
+
+    <section class="story" id="story">
+      <div class="gw">
+        <div class="gi" id="gi">
+          <div class="glow" id="glow"></div>
+          <div class="ring"></div>
+          <canvas
+            id="gl"
+            aria-label="Interactive globe showing StroomX locations. Drag to rotate."
+            role="img"
+          ></canvas>
+        </div>
+      </div>
+      <div class="chap">
+        <div class="n">01 — The problem</div>
+        <h2>Work gets stuck.</h2>
+        <p>
+          Tools pile up, teams drift apart and good ideas wait in queues.
+          Friction quietly becomes the default.
+        </p>
+      </div>
+      <div class="chap">
+        <div class="n">02 — The shift</div>
+        <h2>So we make it flow.</h2>
+        <p>
+          We map the current of your business, remove what blocks it and connect
+          what was never meant to be apart.
+        </p>
+      </div>
+      <div class="chap">
+        <div class="n">03 — The result</div>
+        <h2>Momentum, on repeat.</h2>
+        <p>
+          Clear systems, faster decisions and a team that spends its energy on
+          what matters — not on moving things around.
+        </p>
+      </div>
+      <div class="hint">Drag the globe</div>
+      <div class="dots">
+        <i><b></b></i><i><b></b></i><i><b></b></i>
+      </div>
+    </section>
+
+    <section class="flow" id="services" data-v="ribbon">
+      <div class="flow-stage">
+        <canvas id="curDark" aria-hidden="true"></canvas>
+        <div class="gword" aria-hidden="true"><span>StroomX</span></div>
+        <div class="flow-head">
+          <div class="eyebrow">What we do</div>
+          <h2>Eight ways to keep work moving.</h2>
+        </div>
+        <div
+          class="rib"
+          id="rib"
+          aria-label="Services ribbon. Drag to move, press a card for details."
+        >
+          <div class="world" id="wd"></div>
+        </div>
+        <div class="bricks" id="bk"><div class="track" id="tk"></div></div>
+        <div class="flow-ui">
+          <span>Drag the ribbon · tap a card for details</span>
+          <div class="vt">
+            <button type="button" data-v="ribbon" class="on">Ribbon</button
+            ><button type="button" data-v="bricks">Bricks</button>
+          </div>
+          <div class="arrows">
+            <button type="button" id="pv" aria-label="Scroll left">←</button
+            ><button type="button" id="nx" aria-label="Scroll right">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACKGROUND VIDEO: put your file at assets/stroomx-reel.mp4 (and optionally .webm). If missing, the gradient shows. -->
+    <section class="reel" id="reel">
+        <canvas id="curDark" aria-hidden="true"></canvas>
+
+      <video
+        id="rv"
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+        preload="metadata"
+        aria-hidden="true"
+      >
+        <source
+          src="./Highlight.mp4"
+          type="video/mp4"
+        />
+        <source src="./Highlight.mp4" type="video/webm" />
+      </video>
+      <div class="wrap">
+        <div class="eyebrow">StroomX in motion</div>
+        <h2>See work find its current.</h2>
+        <p>
+          A short look at how we connect people, data and decisions into one
+          smooth flow.
+        </p>
+        <a
+          class="pill"
+          id="rl"
+          target="_blank"
+          rel="noopener"
+          style="margin-top: 26px; background: #fff; color: var(--ink)"
+          >▶ Watch the full video</a
+        >
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="wrap">
+        <div class="eyebrow">In motion</div>
+        <h2>Small shifts. Measurable momentum.</h2>
+        <div class="grid">
+          <div class="stat">
+            <strong><span class="count" data-n="120">0</span>+</strong
+            ><span>Projects delivered</span>
+          </div>
+          <div class="stat">
+            <strong><span class="count" data-n="40">0</span>%</strong
+            ><span>Average time saved</span>
+          </div>
+          <div class="stat">
+            <strong><span class="count" data-n="18">0</span></strong
+            ><span>Countries reached</span>
+          </div>
+          <div class="stat">
+            <strong><span class="count" data-n="98">0</span>%</strong
+            ><span>Client satisfaction</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team" id="team">
+      <div class="wrap">
+        <div class="eyebrow">The team</div>
+        <h2>The people behind the current.</h2>
+        <div class="tg" id="tg"></div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="wrap">
+        <div class="eyebrow">How we work</div>
+        <h2>From first ripple to full current.</h2>
+        <div class="steps">
+          <div class="rail"></div>
+          <div class="fill"></div>
+          <div class="step">
+            <h3>Listen</h3>
+            <p>
+              We start by understanding your people, tools and goals — no
+              assumptions.
+            </p>
+          </div>
+          <div class="step">
+            <h3>Map</h3>
+            <p>
+              We trace where work flows, where it stalls and where the biggest
+              wins hide.
+            </p>
+          </div>
+          <div class="step">
+            <h3>Build</h3>
+            <p>
+              Small, fast releases you can see and feel, shaped together with
+              your team.
+            </p>
+          </div>
+          <div class="step">
+            <h3>Flow</h3>
+            <p>
+              We measure, refine and keep the momentum going long after launch.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+<!-- Replace your whole <section class="reels" id="reels"> ... </section> with this.
+     Bootstrap Icons must stay loaded in <head> (you already have it). -->
+<section class="reels" id="reels">
+  <!-- background layers -->
+  <canvas class="reels-bg" id="reelsBg" aria-hidden="true"></canvas>
+  <div class="reels-glow g1" aria-hidden="true"></div>
+  <div class="reels-glow g2" aria-hidden="true"></div>
+  <div class="reels-word" aria-hidden="true">
+    <span>Meet the team ✦ Meet the team ✦&nbsp;</span><span>Meet the team ✦ Meet the team ✦&nbsp;</span>
+  </div>
+
+  <div class="wrap reels-grid">
+    <!-- left: copy, member list, controls -->
+    <div class="reels-info">
+      <div class="eyebrow">Meet us</div>
+      <h2>Short intros, big currents.</h2>
+      <p class="reels-lead">
+        Say hello to the people behind StroomX. Drag the top card away, or pick a name to bring them forward.
+      </p>
+
+      <!-- built by reels.js from the cards below -->
+      <ul class="reels-list" id="reelsList" aria-label="Team members"></ul>
+
+      <div class="reels-ctrl">
+        <button type="button" class="reels-arrow" id="reelsPrev" aria-label="Previous team member">
+          <i class="bi bi-arrow-left" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="reels-arrow" id="reelsNext" aria-label="Next team member">
+          <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </button>
+        <div class="team-reels-progress" aria-hidden="true">
+          <span id="reelsCurrent">01</span>
+          <div class="team-progress-line"><span id="reelsProgress"></span></div>
+          <span>04</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- right: draggable card stack -->
+    <div class="rs-stage">
+      <div class="team-reels" id="teamReels" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Team members">
+
+        <article class="team-reel-card">
+          <img src="images/team/team-1.jpg" alt="Alex Morgan" draggable="false">
+          <video class="team-reel-video" data-src="https://www.pexels.com/download/video/6666449/" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <div class="team-reel-overlay"></div>
+          <div class="team-reel-content">
+            <span class="team-reel-number">01 / 04</span>
+            <h3>Alex Morgan</h3>
+            <span class="team-reel-role">Founder &amp; CEO</span>
+            <p>Building the vision behind the next generation of connected learning.</p>
+          </div>
+          <div class="team-reel-actions">
+            <button type="button" class="team-reel-action" data-action="play" aria-label="Play intro"><i class="bi bi-play-fill" aria-hidden="true"></i></button>
+            <button type="button" class="team-reel-action" data-action="like" aria-label="Like" aria-pressed="false"><i class="bi bi-heart" aria-hidden="true"></i></button>
+            <button type="button" class="team-reel-action" data-action="share" aria-label="Share"><i class="bi bi-share" aria-hidden="true"></i></button>
+          </div>
+        </article>
+
+        <article class="team-reel-card">
+          <img src="images/team/team-2.jpg" alt="Sarah Williams" loading="lazy" draggable="false">
+          <video class="team-reel-video" data-src="https://www.pexels.com/download/video/7831186/" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <div class="team-reel-overlay"></div>
+          <div class="team-reel-content">
+            <span class="team-reel-number">02 / 04</span>
+            <h3>Sarah Williams</h3>
+            <span class="team-reel-role">Head of Product</span>
+            <p>Turning complex ideas into simple and meaningful experiences.</p>
+          </div>
+          <div class="team-reel-actions">
+            <button type="button" class="team-reel-action" data-action="play" aria-label="Play intro"><i class="bi bi-play-fill" aria-hidden="true"></i></button>
+            <button type="button" class="team-reel-action" data-action="like" aria-label="Like" aria-pressed="false"><i class="bi bi-heart" aria-hidden="true"></i></button>
+            <button type="button" class="team-reel-action" data-action="share" aria-label="Share"><i class="bi bi-share" aria-hidden="true"></i></button>
+          </div>
+        </article>
+
+        <article class="team-reel-card">
+          <img src="images/team/team-3.jpg" alt="Daniel Carter" loading="lazy" draggable="false">
+          <video class="team-reel-video" data-src="https://www.pexels.com/download/video/7344848/" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <div class="team-reel-overlay"></div>
+          <div class="team-reel-content">
+            <span class="team-reel-number">03 / 04</span>
+            <h3>Daniel Carter</h3>
+            <span class="team-reel-role">Technology Director</span>
+            <p>Creating technology that connects people, businesses and education.</p>
+          </div>
+          <div class="team-reel-actions">
+            <button type="button" class="team-reel-action" data-action="play" aria-label="Play intro"><i class="bi bi-play-fill" aria-hidden="true"></i></button>
+            <button type="button" class="team-reel-action" data-action="like" aria-label="Like" aria-pressed="false"><i class="bi bi-heart" aria-hidden="true"></i></button>
+            <button type="button" class="team-reel-action" data-action="share" aria-label="Share"><i class="bi bi-share" aria-hidden="true"></i></button>
+          </div>
+        </article>
+
+        <article class="team-reel-card">
+          <!-- this one was pointing at team-3.jpg; change to team-4.jpg when you have the photo -->
+          <img src="images/team/team-4.jpg" alt="Emma Wilson" loading="lazy" draggable="false">
+          <video class="team-reel-video" data-src="https://www.pexels.com/download/video/7344848/" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <div class="team-reel-overlay"></div>
+          <div class="team-reel-content">
+            <span class="team-reel-number">04 / 04</span>
+            <h3>Emma Wilson</h3>
+            <span class="team-reel-role">Creative Director</span>
+            <p>Bringing creativity, storytelling and design into everything we build.</p>
+          </div>
+          <div class="team-reel-actions">
+            <button type="button" class="team-reel-action" data-action="play" aria-label="Play intro"><i class="bi bi-play-fill" aria-hidden="true"></i></button>
+            <button type="button" class="team-reel-action" data-action="like" aria-label="Like" aria-pressed="false"><i class="bi bi-heart" aria-hidden="true"></i></button>
+            <button type="button" class="team-reel-action" data-action="share" aria-label="Share"><i class="bi bi-share" aria-hidden="true"></i></button>
+          </div>
+        </article>
+
+      </div>
+      <div class="rs-hint">Drag the top card</div>
+    </div>
+  </div>
+</section>
+    <section class="cta" id="contact">
+      <div
+        class="blob b1"
+        style="width: 30vw; height: 30vw; top: -10vw; right: -5vw"
+      ></div>
+      <div
+        class="blob b2"
+        style="width: 26vw; height: 26vw; bottom: -10vw; left: -5vw"
+      ></div>
+      <div class="wrap">
+        <div>
+          <h2 class="cta-title">Ready to flow?</h2>
+          <p>
+            Tell us what's slowing you down. We'll show you how it could move.
+          </p>
+          <a class="pill" href="mailto:hello@stroomx.com">hello@stroomx.com</a>
+        </div>
+        <form class="form" id="cf" novalidate>
+          <div class="two">
+            <label
+              >Name<input
+                type="text"
+                name="name"
+                autocomplete="name"
+                placeholder="Your name"
+                required /></label
+            ><label
+              >Email<input
+                type="email"
+                name="email"
+                autocomplete="email"
+                placeholder="you@company.com"
+                required
+            /></label>
+          </div>
+          <label
+            >Company<input
+              type="text"
+              name="company"
+              autocomplete="organization"
+              placeholder="Where you work"
+          /></label>
+          <fieldset>
+            <legend>What do you need help with?</legend>
+            <div class="chips">
+              <label
+                ><input type="checkbox" name="topic" value="Strategy" /><span
+                  >Strategy</span
+                ></label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  name="topic"
+                  value="Experience design"
+                /><span>Experience design</span></label
+              >
+              <label
+                ><input type="checkbox" name="topic" value="Automation" /><span
+                  >Automation</span
+                ></label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  name="topic"
+                  value="Data & insight"
+                /><span>Data &amp; insight</span></label
+              >
+            </div>
+          </fieldset>
+          <label
+            >Message<textarea
+              name="msg"
+              placeholder="Where does work get stuck today?"
+              required
+            ></textarea>
+          </label>
+          <button class="send" type="submit">Send message</button>
+          <div class="status" id="st" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+      <div class="mark" aria-hidden="true">
+        <svg class="mk1" viewBox="0 0 1225 232" fill="#ff4000">
+          <use href="#lg" />
+        </svg>
+        <svg class="mk2" viewBox="0 0 1225 232" fill="#ff4000">
+          <use href="#lg" />
+        </svg>
+        <svg class="mk3" viewBox="0 0 1225 232" fill="#ff4000">
+          <use href="#lg" />
+        </svg>
+      </div>
+    </section>
+    <footer><span>© 2026 StroomX</span><span>stroomx.com</span></footer>
+
+    <div
+      class="md"
+      id="md"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mt"
+    >
+      <div class="mb">
+        <button class="x" id="mx" type="button" aria-label="Close">×</button>
+        <div class="mp" id="mp"></div>
+        <div class="mi">
+          <div class="eyebrow" id="mg"></div>
+          <h3 id="mt"></h3>
+          <p id="ml"></p>
+          <ul id="mu"></ul>
+          <a class="pill" href="#contact" id="mc">Talk to us about this</a>
+        </div>
+      </div>
+    </div>
+
+  
+<!-- end of body: GSAP first, then app.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="./app.js" defer></script>
+</body>
+</html>
+</body>
+</html>
+
+</html>
