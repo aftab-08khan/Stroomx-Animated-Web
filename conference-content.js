@@ -1,121 +1,137 @@
 /* Edition-specific content. Archived event details must be verified before adding. */
 (() => {
   "use strict";
-  const editions = [
-    {
-      city: "Dubai",
-      country: "United Arab Emirates",
-      year: "2026",
-      reelVideo: "./Highlight.mp4",
-      file: "Dubai skyline - Dubai, UAE.jpg",
-      photo: "./assets/conference-gallery/dubai/poster-2.jpg",
-      description:
-        "The Dubai edition brought the Bricks 4 Kidz family together for five days of keynotes, workshops, awards and city experiences, February 10–14, 2026.",
-      highlights: [
-        "Grand Mercure Dubai",
-        "February 10–14, 2026",
-        "Keynotes, workshops and city experiences",
+ const editions = [
+  // DUBAI 2026
+  {
+    city: "Dubai",
+    country: "United Arab Emirates",
+    year: "2026",
+    reelVideo: "./Highlight.mp4",
+    file: "Dubai skyline - Dubai, UAE.jpg",
+    photo: "./assets/conference-gallery/dubai/poster-2.jpg",
+
+    description:
+      "The Dubai edition brought the Bricks 4 Kidz family together for five days of keynotes, workshops, awards and city experiences, February 10–14, 2026.",
+
+    highlights: [
+      "Grand Mercure Dubai",
+      "February 10–14, 2026",
+      "Keynotes, workshops and city experiences",
+    ],
+
+    events: [
+      [
+        "Keynotes",
+        "Illustrative image · conference speaker on stage.",
+        "./assets/conference-gallery/dubai/gallery/gallery-1.jpg",
       ],
-      events: [
-        [
-          "Keynotes",
-          "Illustrative image · conference speaker on stage.",
-          "./assets/conference-gallery/dubai/gallery/gallery-1.jpg",
-        ],
-        [
-          "Workshops",
-          "Illustrative image · collaborative session.",
-          "./assets/conference-gallery/dubai/gallery/gallery-2.jpg",
-        ],
-        [
-          "The StroomVerse community",
-          "Illustrative image · audience gathering.",
-          "./assets/conference-gallery/dubai/gallery/gallery-3.jpg",
-        ],
-        [
-          "Dubai experiences",
-          "Illustrative image · city after dark.",
-          "./assets/conference-gallery/dubai/gallery/gallery-4.jpg",
-        ],
+      [
+        "Workshops",
+        "Illustrative image · collaborative session.",
+        "./assets/conference-gallery/dubai/gallery/gallery-2.jpg",
       ],
-    },
-    {
-      city: "Orlando",
-      country: "United States",
-      year: "2024",
-      reelVideo: "./Highlight.mp4",
-      file: "Lake Eola and Orlando skyline.jpg",
-      photo:
-        "https://upload.wikimedia.org/wikipedia/commons/3/30/Lake_Eola_and_Orlando_skyline.jpg",
-      description:
-        "Explore the Orlando edition of StroomVerse in Central Florida. This archive introduces the destination; the confirmed conference programme and event photographs have not yet been added.",
-      highlights: [
-        "Orlando, Florida",
-        "2024 edition archive",
-        "Event programme awaiting confirmation",
+      [
+        "The StroomVerse community",
+        "Illustrative image · audience gathering.",
+        "./assets/conference-gallery/dubai/gallery/gallery-3.jpg",
       ],
-      events: [
-        [
-          "Keynotes",
-          "Illustrative image · conference speaker on stage.",
-          "./assets/conference-gallery/keynotes/keynote.jpg",
-        ],
-        [
-          "Workshops",
-          "Illustrative image · collaborative session.",
-          "./assets/conference-gallery/workshops/workshop.jpg",
-        ],
-        [
-          "The StroomVerse community",
-          "Illustrative image · audience gathering.",
-          "./assets/conference-gallery/community/audience.jpg",
-        ],
-        [
-          "Dubai experiences",
-          "Illustrative image · city after dark.",
-          "./assets/conference-gallery/dubai/dubai-night.jpg",
-        ],
+      [
+        "Dubai experiences",
+        "Illustrative image · city after dark.",
+        "./assets/conference-gallery/dubai/gallery/gallery-4.jpg",
       ],
-    },
-    {
-      city: "Lisbon",
-      country: "Portugal",
-      reelVideo: "./Highlight.mp4",
-      year: "2022",
-      file: "Lisboa Skyline from the Roof of the Santa Justa Lift (42789303172).jpg",
-      photo:
+    ],
+  },
+
+  // Las Vegas 2024
+  {
+    city: "Las Vegas",
+    country: "United States",
+    year: "2024",
+
+    file: "Lake Eola and Las Vegas skyline.jpg",
+
+    photo:
+      "./assets/conference-gallery/lasVegas/poster.jpg",
+
+    description:
+      "The 2024 StroomVerse archive celebrates the Bricks 4 Kidz franchise community and its shared commitment to learning, collaboration and business growth. Las Vegas is listed as the edition destination. The detailed programme, exact dates, venue and official event photographs still need to be confirmed.",
+
+    highlights: [
+      "Las Vegas, Florida, United States",
+      "2024 StroomVerse edition",
+      "Programme, dates and venue awaiting confirmation",
+    ],
+
+    events: [
+      [
+        "Conference sessions",
+        "Illustrative conference image · replace with an official Las Vegas event photograph.",
+        "./assets/conference-gallery/lasVegas/gallery/gallery-1.jpg",
+      ],
+      [
+        "Collaborative workshops",
+        "Illustrative workshop image · replace with an official Las Vegas event photograph.",
+        "./assets/conference-gallery/lasVegas/gallery/gallery-2.jpg",
+      ],
+      [
+        "The StroomVerse community",
+        "Illustrative audience image · replace with an official Las Vegas event photograph.",
+        "./assets/conference-gallery/lasVegas/gallery/gallery-3.jpg",
+      ],
+      [
+        "Discover Las Vegas",
+        "Destination photograph of Las Vegas; not an event photograph.",
+        "./assets/conference-gallery/lasVegas/gallery/gallery-4.jpg",
+      ],
+    ],
+  },
+
+  // California 2022
+  {
+    city: "California",
+    country: "Portugal",
+    year: "2022",
+
+    file: "Lisboa Skyline from the Roof of the Santa Justa Lift (42789303172).jpg",
+
+    photo:
+      "https://upload.wikimedia.org/wikipedia/commons/c/c6/Lisboa_Skyline_from_the_Roof_of_the_Santa_Justa_Lift_(42789303172).jpg",
+
+    description:
+      "The 2022 StroomVerse archive highlights the Bricks 4 Kidz franchise community and the connections built across its global network. California is listed as the edition destination. The detailed programme, exact dates, venue and official event photographs still need to be confirmed.",
+
+    highlights: [
+      "California, Portugal",
+      "2022 StroomVerse edition",
+      "Programme, dates and venue awaiting confirmation",
+    ],
+
+    events: [
+      [
+        "Conference sessions",
+        "Illustrative conference image · replace with an official California event photograph.",
+        "./assets/conference-gallery/keynotes/keynote.jpg",
+      ],
+      [
+        "Collaborative workshops",
+        "Illustrative workshop image · replace with an official California event photograph.",
+        "./assets/conference-gallery/workshops/workshop.jpg",
+      ],
+      [
+        "The StroomVerse community",
+        "Illustrative audience image · replace with an official California event photograph.",
+        "./assets/conference-gallery/community/audience.jpg",
+      ],
+      [
+        "Discover California",
+        "Destination photograph of California; not an event photograph.",
         "https://upload.wikimedia.org/wikipedia/commons/c/c6/Lisboa_Skyline_from_the_Roof_of_the_Santa_Justa_Lift_(42789303172).jpg",
-      description:
-        "Explore the Lisbon edition of StroomVerse, set in Portugal’s capital. This destination archive offers a look at the city; the confirmed conference programme and event photographs have not yet been added.",
-      highlights: [
-        "Lisbon, Portugal",
-        "2022 edition archive",
-        "Event programme awaiting confirmation",
       ],
-      events: [
-        [
-          "Keynotes",
-          "Illustrative image · conference speaker on stage.",
-          "./assets/conference-gallery/keynotes/keynote.jpg",
-        ],
-        [
-          "Workshops",
-          "Illustrative image · collaborative session.",
-          "./assets/conference-gallery/workshops/workshop.jpg",
-        ],
-        [
-          "The StroomVerse community",
-          "Illustrative image · audience gathering.",
-          "./assets/conference-gallery/community/audience.jpg",
-        ],
-        [
-          "Dubai experiences",
-          "Illustrative image · city after dark.",
-          "./assets/conference-gallery/dubai/dubai-night.jpg",
-        ],
-      ],
-    },
-  ];
+    ],
+  },
+];
   const $ = (s) => document.querySelector(s);
   function start() {
     const sections = ["about", "schedule", "speakers", "venue", "hotel", "faq"];

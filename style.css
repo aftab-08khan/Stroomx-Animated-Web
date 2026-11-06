@@ -942,9 +942,13 @@
   opacity: 0;
   transform: translateX(-8px);
   transition: opacity 0.3s, transform 0.3s;
+  
 }
 .reels-list li.on button {
   padding-left: 16px;
+  background: #ff7a458c;
+  border-radius: 12px;
+
 }
 .reels-list li.on button::before {
   transform: translateY(-50%) scaleY(1);
@@ -968,6 +972,7 @@
 .reels-list li.on .rl-img,
 .reels-list button:hover .rl-img {
   filter: none;
+  
 }
 .rl-t strong {
   display: block;
@@ -983,6 +988,7 @@
 .reels-arrow:focus-visible,
 .team-reel-action:focus-visible {
   outline: 3px solid var(--o);
+  background: var(--a);
   outline-offset: 3px;
 }
 

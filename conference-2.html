@@ -2486,7 +2486,7 @@ const TEX={day:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEB
 const D=Math.PI/180,$=s=>document.querySelector(s),RM=matchMedia("(prefers-reduced-motion:reduce)").matches;
 const ll=(a,o,r=1)=>new THREE.Vector3(r*Math.cos(a*D)*Math.cos(o*D),r*Math.sin(a*D),-r*Math.cos(a*D)*Math.sin(o*D));
 const sl=(a,b,t)=>{const o=Math.acos(Math.min(1,a.dot(b))),s=Math.sin(o);return a.clone().multiplyScalar(Math.sin((1-t)*o)/s).add(b.clone().multiplyScalar(Math.sin(t*o)/s))};
-const LOCS=[{y:"2026",n:"Dubai",c:"United Arab Emirates",rg:"Arabian Peninsula",lat:25.2,lon:55.27,r:[24,50]},{y:"2024",n:"Orlando",c:"United States",rg:"North America",lat:28.54,lon:-81.38,r:[30,-90]},{y:"2022",n:"Lisbon",c:"Portugal",rg:"Europe",lat:38.72,lon:-9.14,r:[40,-10]}];
+const LOCS=[{y:"2026",n:"Dubai",c:"United Arab Emirates",rg:"Arabian Peninsula",lat:25.2,lon:55.27,r:[24,50]},{y:"2024",n:"Las Vegas",c:"United States",rg:"North America",lat:28.54,lon:-81.38,r:[30,-90]},{y:"2022",n:"California",c:"Portugal",rg:"Europe",lat:38.72,lon:-9.14,r:[40,-10]}];
 $("#pick").innerHTML=LOCS.map((L,i)=>`<button class="loc" data-i="${i}"><em>STROOMVERSE ${L.y}</em><b>${L.n}</b><span>${L.c}</span></button>`).join("");
 const cv=$("#gl"),renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true});
 renderer.setPixelRatio(Math.min(devicePixelRatio,2));
@@ -2613,8 +2613,8 @@ Promise.all([load(TEX.day),load(TEX.night),load(TEX.cloud)]).then(([day,night,cl
   ];
 
 const LOCATIONS = [
-  [28.54, -81.38, "Orlando", "r"],
-  [38.72, -9.14, "Lisbon", "l"],
+  [28.54, -81.38, "Las Vegas", "r"],
+  [38.72, -9.14, "California", "l"],
   // Americas
   [43.65, -79.38, "Canada", "r"],
   [-33.45, -70.67, "Chile", "l"],
@@ -2830,7 +2830,7 @@ function initGlobe() {
   const TAU = Math.PI * 2;
 
   /* ---------- data ---------- */
-  const REGIONS = {"Dubai 2026":["United Arab Emirates"],"Orlando 2024":["Orlando"],"Lisbon 2022":["Lisbon"]};
+  const REGIONS = {"Dubai 2026":["United Arab Emirates"],"Las Vegas 2024":["Las Vegas"],"California 2022":["California"]};
   const vec = (la, lo, r = 1) => {
     const p = (la * Math.PI) / 180, l = (lo * Math.PI) / 180;
     return [r * Math.cos(p) * Math.sin(l), r * Math.sin(p), r * Math.cos(p) * Math.cos(l)];
@@ -3512,8 +3512,8 @@ function initGlobe() {
   /* ===================== StroomVerse content — EDIT THESE ===================== */
   const ED = [
     { k: "Dubai 2026", t: "StroomVerse 2026 · Dubai", p: "Five days, February 10–14, at the Grand Mercure Dubai: keynotes, workshops, a desert safari, Burj Khalifa and a dhow cruise with the Bricks 4 Kidz family." },
-    { k: "Orlando 2024", t: "StroomVerse 2024 · Orlando (sample)", p: "Sample copy. Replace with the real story, venue and film of the 2024 edition." },
-    { k: "Lisbon 2022", t: "StroomVerse 2022 · Lisbon (sample)", p: "Sample copy. Replace with the real story, venue and film of the 2022 edition." },
+    { k: "Las Vegas 2024", t: "StroomVerse 2024 · Las Vegas (sample)", p: "Sample copy. Replace with the real story, venue and film of the 2024 edition." },
+    { k: "California 2022", t: "StroomVerse 2022 · California (sample)", p: "Sample copy. Replace with the real story, venue and film of the 2022 edition." },
   ];
   const AG = [
     ["Feb 10", [["06:30 PM", "Registration", "Mohra Hall, Grand Mercure Dubai"], ["07:00 PM", "Meet and Greet", "Meet the StroomX team and the Bricks 4 Kidz family"], ["08:00 PM", "Mocktail reception and dinner", "Until 10:00 PM"]]],
