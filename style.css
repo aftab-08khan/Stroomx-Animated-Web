@@ -1329,10 +1329,29 @@
   .nav-actions { gap: 8px; }
   .nav-actions .ghost,
   .nav-actions .pill { padding: 8px 12px; font-size: 0.8rem; }
-  .reels { --reel-card-h: min(540px, 70svh); }
+  .reels {
+    --reel-card-w: min(380px, calc(100vw - 44px));
+    --reel-card-h: min(540px, 64svh);
+    overflow: clip;
+    padding-block: 56px 68px;
+    scroll-margin-top: 12px;
+  }
+  .reels-grid { gap: 22px; }
+  .rs-stage {
+    width: min(100%, calc(var(--reel-card-w) + 28px));
+    height: calc(var(--reel-card-h) + 56px);
+  }
+  .rs-stage::before { width: calc(var(--reel-card-h) * 0.88); }
+  .team-reels { touch-action: pan-y pinch-zoom; }
+  .team-reel-card { border-radius: 24px; touch-action: pan-y pinch-zoom; }
+  .team-reel-card.is-dragging { transition: none; }
   .team-reel-content { left: 22px; right: 72px; bottom: 24px; }
   .team-reel-content p { font-size: 14px; }
   .team-reel-action { width: 42px; height: 42px; }
+}
+
+@media (max-height: 560px) and (max-width: 900px) {
+  .reels { --reel-card-h: min(420px, 68svh); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2277,3 +2296,86 @@
 .gl-chips button.on{background:var(--ink);color:#fff}
 .gl-chips button:focus-visible{outline:3px solid var(--o);outline-offset:2px}
 @media(max-width:800px){.gl-chips{display:none}}
+
+/* StroomX company ribbon: supplied brick artwork layered over the wordmark. */
+.flow-head,
+.flow-ui { position: relative; z-index: 3; }
+.flow-summary {
+  max-width: 48rem;
+  margin-top: 10px;
+  color: #ffffffb8;
+  font-size: clamp(.9rem, 1.2vw, 1.05rem);
+}
+.flow-summary a { color: #ffb08a; text-underline-offset: 3px; }
+.gword { z-index: 1; }
+.flow-stage .rib { z-index: 2; }
+.brand-card {
+  font-size: clamp(12px, calc(var(--bw) / 26), 16px);
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--brick-ink);
+}
+.brand-card.fc-rust,
+.brand-card.fc-orange,
+.brand-card.fc-ink { --brick-ink: #fff; --brick-shade: #090b1199; }
+.brand-card.fc-peach,
+.brand-card.fc-bone,
+.brand-card.fc-blush { --brick-ink: #17191c; --brick-shade: transparent; }
+.fc-brick {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  user-select: none;
+  filter: drop-shadow(0 12px 18px #0007);
+}
+.fc-shade {
+  position: absolute;
+  z-index: 1;
+  inset: 24% 0 13%;
+  background: linear-gradient(0deg, var(--brick-shade), transparent 76%);
+  pointer-events: none;
+}
+.brand-card .fb,
+.brand-card .fcb,
+.brand-card .ft { position: relative; z-index: 2; color: var(--brick-ink); }
+.brand-card .fb { opacity: .86; }
+.brand-card .fb span {
+  border: 1px solid currentColor;
+  border-radius: 99px;
+  padding: .12em .7em;
+  margin-left: auto;
+  background: #15171c12;
+}
+.brand-card .fcb { padding: .55em 1.2em; }
+.brand-card .fcb h3 { max-width: 13ch; font-size: 2em; }
+.brand-card .fcb p { max-width: 62%; font-size: .76em; line-height: 1.32; opacity: .86; }
+.brand-card .ft {
+  left: auto;
+  right: 10%;
+  bottom: 9%;
+  display: flex;
+  gap: .65em;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  font-weight: 700;
+}
+.brand-card .ft span { color: var(--brick-ink); }
+.brand-card:hover .fc-brick,
+.brand-card:focus-visible .fc-brick { filter: drop-shadow(0 18px 24px #0009) brightness(1.05); }
+@media (max-width: 800px) {
+  .flow-summary { max-width: 38ch; }
+  .brand-card .fcb p { max-width: 66%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brand-card .fc-brick { transition: none; }
+}

@@ -220,19 +220,20 @@
         <canvas id="curDark" aria-hidden="true"></canvas>
         <div class="gword" aria-hidden="true"><span>StroomX</span></div>
         <div class="flow-head">
-          <div class="eyebrow">What we do</div>
-          <h2>Eight ways to keep work moving.</h2>
+          <div class="eyebrow">Our companies</div>
+          <h2>Six brands. One StroomX family.</h2>
+          <p class="flow-summary">Learning, team-building, math and robotics, creative design, and franchise technology. <a href="https://stroomx.com/" target="_blank" rel="noopener">Meet the StroomX companies ↗</a></p>
         </div>
         <div
           class="rib"
           id="rib"
-          aria-label="Services ribbon. Drag to move, press a card for details."
+          aria-label="StroomX company ribbon. Drag to move, press a brick for details."
         >
           <div class="world" id="wd"></div>
         </div>
         <div class="bricks" id="bk"><div class="track" id="tk"></div></div>
         <div class="flow-ui">
-          <span>Drag the ribbon · tap a card for details</span>
+          <span>Drag to explore · select a brick for details</span>
           <div class="vt">
             <button type="button" data-v="ribbon" class="on">Ribbon</button
             >
@@ -414,7 +415,7 @@
 
         <article class="team-reel-card">
           <img src="./assets/teams/Nishant-Verma.jpg" alt="Sarah Williams" loading="lazy" draggable="false">
-          <video class="team-reel-video" data-src="https://www.image2url.com/r2/default/videos/1793786795294-23ce58ae-580b-4153-b0cc-e722a6ad8947.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <video class="team-reel-video" data-src="https://www.image2url.com/r2/default/videos/1793786795294-23ce58ae-580b-4153-b0cc-e722a6ad8947.mp4" loo autoplay playsinline preload="none" aria-hidden="true"></video>
           <div class="team-reel-overlay"></div>
           <div class="team-reel-content">
             <span class="team-reel-number">02 / 04</span>
@@ -431,7 +432,7 @@
 
         <article class="team-reel-card">
           <img src="./assets/teams/Emmanuel-Rego-CEO-black.jpg" alt="Daniel Carter" loading="lazy" draggable="false">
-          <video class="team-reel-video" data-src="https://www.pexels.com/download/video/7344848/" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <video class="team-reel-video" data-src="https://www.pexels.com/download/video/7344848/" loo autoplay playsinline preload="none" aria-hidden="true"></video>
           <div class="team-reel-overlay"></div>
           <div class="team-reel-content">
             <span class="team-reel-number">03 / 04</span>
@@ -586,9 +587,7 @@
     </div>
 
   
-<!-- end of body: GSAP first, then app.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<!-- Reels interactions are loaded only as the section approaches the viewport. -->
 <script src="./app.js" defer></script>
 </body>
 </html>

@@ -26,12 +26,15 @@
 
   const TEAM = [
     { n: "Emmanuel Rego", r: "CEO", img: "./assets/teams/Emmanuel-Rego-CEO-black.jpg" },
+
+    { n: "Ann Rego", r: "CEO", img: "./assets/teams/Ann-Rego.jpg" },
+
     { n: "Ajmal Khan", r: "CTO", img: "./assets/teams/Ajmal.jpeg" },
     { n: "Shahed Khan", r: "Curriculum Lead", img: "./assets/teams/Shahed.jpeg" },
     { n: "Nishant Verma", r: "Sales Manager", img: "./assets/teams/Nishant-Verma.jpg" },
   ];
 
-const LOCATIONS = [
+const LOCATIONS = [ 
   // Americas
   [43.65, -79.38, "Canada", "r"],
   [-33.45, -70.67, "Chile", "l"],

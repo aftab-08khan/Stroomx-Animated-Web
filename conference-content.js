@@ -9,7 +9,7 @@
     year: "2026",
     reelVideo: "./Highlight.mp4",
     file: "Dubai skyline - Dubai, UAE.jpg",
-    photo: "./assets/conference-gallery/dubai/poster-2.jpg",
+    photo: "./assets/conference-gallery/dubai/dubai-night.jpg",
 
     description:
       "The Dubai edition brought the Bricks 4 Kidz family together for five days of keynotes, workshops, awards and city experiences, February 10–14, 2026.",
@@ -50,16 +50,18 @@
     country: "United States",
     year: "2024",
 
-    file: "Lake Eola and Las Vegas skyline.jpg",
+    file: "The StripLas Vegas Strip.jpg",
 
     photo:
-      "./assets/conference-gallery/lasVegas/poster.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/The_StripLas_Vegas_Strip.jpg/1280px-The_StripLas_Vegas_Strip.jpg",
+    photoCredit: "Las Vegas Strip · Daniel Lobo · CC0",
+    photoCreditUrl: "https://commons.wikimedia.org/wiki/File:The_StripLas_Vegas_Strip.jpg",
 
     description:
       "The 2024 StroomVerse archive celebrates the Bricks 4 Kidz franchise community and its shared commitment to learning, collaboration and business growth. Las Vegas is listed as the edition destination. The detailed programme, exact dates, venue and official event photographs still need to be confirmed.",
 
     highlights: [
-      "Las Vegas, Florida, United States",
+      "Las Vegas, Nevada, United States",
       "2024 StroomVerse edition",
       "Programme, dates and venue awaiting confirmation",
     ],
@@ -83,7 +85,7 @@
       [
         "Discover Las Vegas",
         "Destination photograph of Las Vegas; not an event photograph.",
-        "./assets/conference-gallery/lasVegas/gallery/gallery-4.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/The_StripLas_Vegas_Strip.jpg/1280px-The_StripLas_Vegas_Strip.jpg",
       ],
     ],
   },
@@ -91,19 +93,21 @@
   // California 2022
   {
     city: "California",
-    country: "Portugal",
+    country: "United States",
     year: "2022",
 
-    file: "Lisboa Skyline from the Roof of the Santa Justa Lift (42789303172).jpg",
+    file: "Big Sur Coastline.jpg",
 
     photo:
-      "https://upload.wikimedia.org/wikipedia/commons/c/c6/Lisboa_Skyline_from_the_Roof_of_the_Santa_Justa_Lift_(42789303172).jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Big_Sur_Coastline.jpg/1280px-Big_Sur_Coastline.jpg",
+    photoCredit: "Big Sur coastline · NOAA National Ocean Service · CC BY 2.0",
+    photoCreditUrl: "https://commons.wikimedia.org/wiki/File:Big_Sur_Coastline.jpg",
 
     description:
       "The 2022 StroomVerse archive highlights the Bricks 4 Kidz franchise community and the connections built across its global network. California is listed as the edition destination. The detailed programme, exact dates, venue and official event photographs still need to be confirmed.",
 
     highlights: [
-      "California, Portugal",
+      "California, United States",
       "2022 StroomVerse edition",
       "Programme, dates and venue awaiting confirmation",
     ],
@@ -212,52 +216,46 @@
         });
       }
       $("#rt").textContent = `StroomVerse ${e.year} · ${e.city}`;
-     const reelVideo = $("#rv");
+      const reelVideo = $("#rv");
+      const filmPlay = $("#film-play");
+      reelVideo.pause();
+      reelVideo.removeAttribute("src");
+      reelVideo.replaceChildren();
+      reelVideo.dataset.filmSrc = e.reelVideo || "";
+      reelVideo.poster = e.photo;
 
-reelVideo.pause();
-reelVideo.removeAttribute("src");
-reelVideo.replaceChildren();
+      if (e.reelVideo) {
+        reelVideo.hidden = false;
+        reelVideo.load();
+        filmPlay.hidden = false;
+        filmPlay.querySelector("b").textContent = `Play ${e.city} conference film`;
+      } else {
+        reelVideo.hidden = true;
+        reelVideo.load();
+        filmPlay.hidden = true;
+      }
 
-if (e.reelVideo) {
-  const source = document.createElement("source");
-  source.src = e.reelVideo;
-  source.type = "video/mp4";
+      $("#rp").textContent = e.reelVideo
+        ? e.description
+        : `${e.description} A conference film is not available for this edition yet.`;
 
-  reelVideo.appendChild(source);
-  reelVideo.hidden = false;
-
-  reelVideo.load();
-
-  reelVideo.play().catch((error) => {
-    console.log("Video autoplay prevented:", error);
-  });
-} else {
-  reelVideo.hidden = true;
-  reelVideo.load();
-}
-
-$("#rp").textContent = e.reelVideo
-  ? e.description
-  : `${e.description} A conference film is not available for this edition yet.`;
-
-$("#reel .eyebrow").textContent = e.reelVideo
-  ? `${e.city} conference film`
-  : `${e.city} edition archive`;
+      $("#reel .eyebrow").textContent = e.reelVideo
+        ? `${e.city} conference film`
+        : `${e.city} edition archive`;
       const credit =
         "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(e.file);
       $("#destination-photos").innerHTML =
-        `<figure style="border-radius: 16px; overflow: hidden;">
-    <img src="${e.photo}" width="1200" height="100%"
-         loading="lazy"
-         alt="${e.city} city skyline"
-         style="width: 100%; height: 650px; object-fit: cover; border-radius: 16px;">
- 
+        `<figure class="destination-photo">
+    <img src="${e.photo}" width="1200" height="800" loading="lazy" decoding="async" alt="${e.city}, ${e.country}">
+    <span class="destination-photo-shade" aria-hidden="true"></span>
+    <figcaption>${e.city} · ${e.year}</figcaption>
 </figure>
 <div class="archive-note">
     <div class="eyebrow">StroomVerse ${e.year}</div>
     <h3>${e.city}</h3>
     <p>${e.description}</p>
     <p>Looking for event photos? <a href="mailto:hello@stroomx.com">Contact the StroomX team ↗</a></p>
+    ${e.photoCredit ? `<small class="photo-credit">${e.photoCredit} · <a href="${e.photoCreditUrl}" target="_blank" rel="noreferrer">Image details</a></small>` : ""}
 </div>`;
       const eventStack = $("#event-stack");
       const events = e.events || [
@@ -316,6 +314,17 @@ $("#reel .eyebrow").textContent = e.reelVideo
     apply(0);
     document.documentElement.classList.remove("lock");
     $("#reel .ed-tabs").setAttribute("aria-label", "Choose conference edition");
+    $("#film-play").addEventListener("click", () => {
+      const video = $("#rv");
+      if (!video.getAttribute("src") && video.dataset.filmSrc) {
+        video.src = video.dataset.filmSrc;
+        video.load();
+      }
+      video.play().then(() => { $("#film-play").hidden = true; }).catch(() => {
+        $("#film-play").hidden = false;
+        $("#film-play b").textContent = "Film unavailable · try again";
+      });
+    });
   }
   document.readyState === "loading"
     ? document.addEventListener("DOMContentLoaded", start, { once: true })

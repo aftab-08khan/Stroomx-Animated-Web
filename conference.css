@@ -639,6 +639,31 @@
         position: relative;
         z-index: 2;
       }
+      .reel-film-play {
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        top: 50%;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        max-width: calc(100% - 36px);
+        padding: 14px 20px;
+        transform: translate(-50%, -50%);
+        border: 1px solid #ffffff88;
+        border-radius: 999px;
+        background: #15171ccc;
+        color: #fff;
+        font: 600 14px var(--body);
+        box-shadow: 0 12px 36px #0005;
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        cursor: pointer;
+        transition: transform .25s ease, background .25s ease;
+      }
+      .reel-film-play:hover { transform: translate(-50%, -50%) scale(1.04); background: #f4511e; }
+      .reel-film-play span { color: #ff997a; }
+      .reel-film-play[hidden] { display: none; }
       .reel .eyebrow {
         color: #ffffffcc;
       }
@@ -3284,6 +3309,76 @@
           transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
           filter 0.5s;
       }
+      .destination-gallery {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+        align-items: stretch;
+        gap: clamp(18px, 3vw, 36px);
+        margin-top: 28px;
+      }
+      .destination-photo {
+        position: relative;
+        min-height: 360px;
+        margin: 0;
+        overflow: hidden;
+        isolation: isolate;
+        border-radius: 22px;
+        background: linear-gradient(135deg, #15171c, #59301f 55%, #f4511e);
+        box-shadow: 0 26px 70px #15171c26;
+      }
+      .destination-photo::after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        background: linear-gradient(180deg, #080a0b00 42%, #080a0b99 100%), linear-gradient(115deg, #f4511e20, transparent 55%);
+        pointer-events: none;
+      }
+      .destination-photo img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 360px;
+        object-fit: cover;
+        animation: destination-reveal 0.8s cubic-bezier(.2,.8,.2,1) both, destination-drift 24s ease-in-out 0.8s infinite alternate;
+        will-change: transform;
+      }
+      .destination-photo figcaption {
+        position: absolute;
+        z-index: 2;
+        left: clamp(20px, 3vw, 36px);
+        bottom: clamp(18px, 3vw, 32px);
+        color: #fff;
+        font: 500 clamp(1.6rem, 3.5vw, 3rem)/1 var(--display);
+        letter-spacing: -.04em;
+        text-shadow: 0 2px 20px #0008;
+      }
+      @keyframes destination-reveal {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes destination-drift {
+        to { transform: scale(1.055) translate3d(-.5%, -.35%, 0); }
+      }
+      .archive-note {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(20px, 3vw, 34px);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: linear-gradient(145deg, #fffefa, #f3eee6);
+        box-shadow: 0 18px 44px #15171c0b;
+      }
+      .archive-note h3 {
+        margin: 10px 0 14px;
+        font: 500 clamp(2rem, 3.5vw, 3.2rem)/1 var(--display);
+        letter-spacing: -.045em;
+      }
+      .archive-note p { color: var(--mute); margin: 0 0 14px; }
+      .archive-note a { color: var(--o); }
+      .photo-credit { margin-top: 8px; color: var(--mute); font-size: .72rem; line-height: 1.5; }
+      .photo-credit a { text-decoration: underline; text-underline-offset: 3px; }
       .event-photo-card:hover .event-photo-image {
         transform: scale(1.045);
         filter: saturate(1.08);
@@ -3316,6 +3411,10 @@
         .event-stack {
           grid-template-columns: 1fr;
         }
+        .destination-gallery { grid-template-columns: 1fr; }
+        .destination-photo,
+        .destination-photo img { min-height: 260px; }
+        .archive-note { min-height: 220px; }
       }
       @media (prefers-reduced-motion: reduce) {
         .sec[data-w]::before
@@ -3323,7 +3422,9 @@
           animation: none;
         }
         .event-photo-card,
-        .event-photo-image {
+        .event-photo-image,
+        .destination-photo img {
           transition: none;
+          animation: none;
         }
       }
