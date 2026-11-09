@@ -2317,6 +2317,7 @@
   background: transparent;
   box-shadow: none;
   color: var(--brick-ink);
+  padding : 20px;
 }
 .brand-card.fc-rust,
 .brand-card.fc-orange,
@@ -2358,7 +2359,6 @@
 .brand-card .fcb h3 { max-width: 13ch; font-size: 2em; }
 .brand-card .fcb p { max-width: 62%; font-size: .76em; line-height: 1.32; opacity: .86; }
 .brand-card .ft {
-  left: auto;
   right: 10%;
   bottom: 9%;
   display: flex;

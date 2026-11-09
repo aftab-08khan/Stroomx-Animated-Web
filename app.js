@@ -14,14 +14,12 @@
   };
 
   const SERVICES = [
-    { t: "Strategy", tag: "Plan", d: "A clear map of where your business is and where it flows next.", p: ["Business and flow audit", "Priority roadmap", "Success metrics"] },
-    { t: "Experience design", tag: "Design", d: "Interfaces your customers and teams actually enjoy using.", p: ["Research and journeys", "Prototypes", "Design systems"] },
-    { t: "Automation", tag: "Automate", d: "Remove the manual hand-offs that slow everything down.", p: ["Workflow automation", "Tool integrations", "Approval flows"] },
-    { t: "Data & insight", tag: "Measure", d: "One trusted view of the numbers behind your decisions.", p: ["Dashboards", "Data pipelines", "Reporting"] },
-    { t: "Web & apps", tag: "Build", d: "Fast, reliable products shipped in small, visible releases.", p: ["Websites", "Web apps", "Mobile"] },
-    { t: "Integration", tag: "Connect", d: "Join up the systems that were never meant to be apart.", p: ["APIs", "ERP / CRM sync", "Legacy bridges"] },
-    { t: "Growth", tag: "Grow", d: "Turn smoother operations into measurable momentum.", p: ["Funnel analysis", "Experiments", "Lifecycle"] },
-    { t: "Support", tag: "Care", d: "We stay after launch to measure, refine and keep it moving.", p: ["Monitoring", "Training", "Continuous improvement"] },
+    { t: "BRICKS 4 KIDZ", tag: "STEM learning", color: "rust", image: "./assets/brick-cards/brick-card-rust.webp", url: "https://www.bricks4kidz.com/", d: "Hands-on STEM programs that help children learn through LEGO® building, robotics and creative play.", p: ["After-school programs", "Camps and workshops", "Franchise opportunities"] },
+    { t: "BRICKS 4 KIDZ E-LEARN", tag: "Online learning", color: "peach", image: "./assets/brick-cards/brick-card-peach.webp", url: "https://bricks4kidz.com/", d: "Digital learning experiences that bring the Bricks 4 Kidz approach to students wherever they are.", p: ["Online enrichment", "Build-based lessons", "Flexible learning"] },
+    { t: "BRICKS 4 BIZ", tag: "Team building", color: "ink", image: "./assets/brick-cards/brick-card-ink.webp", url: "https://bricks4biz.com/", d: "Interactive LEGO® based experiences designed to spark communication, creativity and collaboration at work.", p: ["Corporate events", "Team challenges", "Facilitated workshops"] },
+    { t: "BRICKS 4 SCHOOLZ", tag: "Education", color: "orange", image: "./assets/brick-cards/brick-card-orange.webp", url: "https://bricks4kidz.com/", d: "Curriculum-connected STEM enrichment and hands-on learning experiences for schools.", p: ["In-school programs", "STEM curriculum support", "School partnerships"] },
+    { t: "SEW FUN STUDIOS", tag: "Creative design", color: "bone", image: "./assets/brick-cards/brick-card-bone.webp", url: "https://sewfunstudios.com/", d: "Creative sewing and design experiences that build confidence through making.", p: ["Sewing classes", "Creative workshops", "Skill-building projects"] },
+    { t: "BFK FMS", tag: "Franchise systems", color: "blush", image: "./assets/brick-cards/brick-card-blush.webp", url: "https://stroomx.com/", d: "Franchise management solutions supporting the systems and operations behind education brands.", p: ["Franchise support", "Operational systems", "Brand resources"] },
   ];
 
   const TEAM = [
@@ -604,23 +602,14 @@ function initGlobe() {
   /* ===================== services: ribbon + bricks + modal ===================== */
   function makeCard(i, tagName) {
     const s = SERVICES[i];
-    const c = el(tagName, { className: `fc t${i % 4}` });
+    const c = el(tagName, { className: `fc brand-card fc-${s.color}` });
     if (tagName === "button") c.type = "button";
-    const fn = el("div", { className: "fn" }, [el("u"), el("u"), el("u")]);
-    $$("u", fn).forEach((u, j) => { if (j <= i % 3) u.style.opacity = "1"; });
-    const art = el("div", { className: "fa" });
-    const round = i % 2;
-    for (let j = 0; j < 3; j++) {
-      const b = el("b");
-      if (round) Object.assign(b.style, { left: j * 22 + "%", bottom: j * 14 + "%", width: 58 - j * 14 + "%", height: 58 - j * 14 + "%", borderRadius: "50%" });
-      else Object.assign(b.style, { left: j * 34 + "%", bottom: "0", width: "26%", height: 32 + ((i + j * 2) * 17) % 58 + "%", borderRadius: "7px" });
-      Object.assign(b.style, { background: "currentColor", opacity: String(0.22 + j * 0.2) });
-      art.append(b);
-    }
     c.append(
+      el("img", { className: "fc-brick", src: s.image, alt: "", "aria-hidden": "true", loading: "lazy", decoding: "async" }),
+      el("span", { className: "fc-shade", "aria-hidden": "true" }),
       el("div", { className: "fb" }, [el("i"), el("i"), el("i"), el("span", { textContent: s.tag })]),
-      el("div", { className: "fcb" }, [fn, el("h3", { textContent: s.t }), el("p", { textContent: s.d }), art]),
-      el("div", { className: "ft" }, [el("span", { textContent: "Explore" })])
+      el("div", { className: "fcb" }, [el("h3", { textContent: s.t }), el("p", { textContent: s.d })]),
+      el("div", { className: "ft" }, [el("span", { textContent: "Explore ↗" })])
     );
     return c;
   }
@@ -787,6 +776,14 @@ function initGlobe() {
       $("#mt", modal).textContent = service.t;
       $("#ml", modal).textContent = service.d;
       $("#mu", modal).replaceChildren(...service.p.map((item) => el("li", { textContent: item })));
+      const cta = $("#mc", modal);
+      if (cta) {
+        cta.href = service.url;
+        cta.target = "_blank";
+        cta.rel = "noopener noreferrer";
+        cta.hidden = false;
+        cta.textContent = "Visit company ↗";
+      }
       previousFocus = document.activeElement;
       previousOverflow = document.body.style.overflow;
       modal.classList.add("on");
