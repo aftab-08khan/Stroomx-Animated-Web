@@ -9,7 +9,7 @@
     year: "2026",
     reelVideo: "./Highlight.mp4",
     file: "Dubai skyline - Dubai, UAE.jpg",
-    photo: "./assets/conference-gallery/dubai/dubai-night.jpg",
+    photo: "./assets/conference-gallery/dubai/poster.jpg",
 
     description:
       "The Dubai edition brought the Bricks 4 Kidz family together for five days of keynotes, workshops, awards and city experiences, February 10–14, 2026.",
@@ -53,9 +53,8 @@
     file: "The StripLas Vegas Strip.jpg",
 
     photo:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/The_StripLas_Vegas_Strip.jpg/1280px-The_StripLas_Vegas_Strip.jpg",
-    photoCredit: "Las Vegas Strip · Daniel Lobo · CC0",
-    photoCreditUrl: "https://commons.wikimedia.org/wiki/File:The_StripLas_Vegas_Strip.jpg",
+      "./assets/conference-gallery/lasVegas/poster.jpg",
+
 
     description:
       "The 2024 StroomVerse archive celebrates the Bricks 4 Kidz franchise community and its shared commitment to learning, collaboration and business growth. Las Vegas is listed as the edition destination. The detailed programme, exact dates, venue and official event photographs still need to be confirmed.",
@@ -85,7 +84,8 @@
       [
         "Discover Las Vegas",
         "Destination photograph of Las Vegas; not an event photograph.",
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/The_StripLas_Vegas_Strip.jpg/1280px-The_StripLas_Vegas_Strip.jpg",
+                "./assets/conference-gallery/lasVegas/gallery/gallery-4.jpg",
+
       ],
     ],
   },
@@ -99,9 +99,7 @@
     file: "Big Sur Coastline.jpg",
 
     photo:
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Big_Sur_Coastline.jpg/1280px-Big_Sur_Coastline.jpg",
-    photoCredit: "Big Sur coastline · NOAA National Ocean Service · CC BY 2.0",
-    photoCreditUrl: "https://commons.wikimedia.org/wiki/File:Big_Sur_Coastline.jpg",
+      "./assets/conference-gallery/california/poster.jpg",
 
     description:
       "The 2022 StroomVerse archive highlights the Bricks 4 Kidz franchise community and the connections built across its global network. California is listed as the edition destination. The detailed programme, exact dates, venue and official event photographs still need to be confirmed.",
@@ -116,22 +114,24 @@
       [
         "Conference sessions",
         "Illustrative conference image · replace with an official California event photograph.",
-        "./assets/conference-gallery/keynotes/keynote.jpg",
+      "./assets/conference-gallery/california/gallery/gallery-1.jpg",
       ],
       [
         "Collaborative workshops",
         "Illustrative workshop image · replace with an official California event photograph.",
-        "./assets/conference-gallery/workshops/workshop.jpg",
+      "./assets/conference-gallery/california/gallery/gallery-2.jpg",
+
       ],
       [
         "The StroomVerse community",
         "Illustrative audience image · replace with an official California event photograph.",
-        "./assets/conference-gallery/community/audience.jpg",
+      "./assets/conference-gallery/california/gallery/gallery-3.jpeg",
+
       ],
       [
         "Discover California",
         "Destination photograph of California; not an event photograph.",
-        "https://upload.wikimedia.org/wikipedia/commons/c/c6/Lisboa_Skyline_from_the_Roof_of_the_Santa_Justa_Lift_(42789303172).jpg",
+      "./assets/conference-gallery/california/poster.jpg",
       ],
     ],
   },
@@ -254,8 +254,7 @@
     <div class="eyebrow">StroomVerse ${e.year}</div>
     <h3>${e.city}</h3>
     <p>${e.description}</p>
-    <p>Looking for event photos? <a href="mailto:hello@stroomx.com">Contact the StroomX team ↗</a></p>
-    ${e.photoCredit ? `<small class="photo-credit">${e.photoCredit} · <a href="${e.photoCreditUrl}" target="_blank" rel="noreferrer">Image details</a></small>` : ""}
+    <p>Looking for event photos? <a href="mailto:support@stroomx.com">Contact the StroomX team ↗</a></p>
 </div>`;
       const eventStack = $("#event-stack");
       const events = e.events || [
@@ -268,9 +267,9 @@
       $("#event-gallery-title").textContent = e.events
         ? `${e.city} ${e.year} · moments`
         : `${e.city} ${e.year} · destination`;
-      $("#event-gallery-note").textContent = e.events
-        ? "Illustrative event imagery; replace with official photos when available."
-        : "Destination imagery for this edition; official event photos are not yet available.";
+      // $("#event-gallery-note").textContent = e.events
+      //   ? "Illustrative event imagery; replace with official photos when available."
+      //   : "Destination imagery for this edition; official event photos are not yet available.";
       eventStack.innerHTML = events
         .map(
           ([title, detail, image], j) =>

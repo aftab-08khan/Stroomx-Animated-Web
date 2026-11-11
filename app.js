@@ -7,7 +7,7 @@
   /* ===================== CONTENT — EDIT THESE ===================== */
   const CONFIG = {
     formEndpoint: "", // e.g. "https://formspree.io/f/xxxxxxx". Empty = opens the visitor's email app.
-    contactEmail: "hello@stroomx.com",
+    contactEmail: "support@stroomx.com",
     reelVideo: "", // e.g. "assets/stroomx-reel.mp4" (replaces the broken Pixabay sources)
     reelYouTubeId: "", // optional: YouTube video id for a looping background (uses the .rfw CSS)
     fullVideoUrl: "", // target of the "Watch the full video" button (hidden while empty)
