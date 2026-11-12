@@ -1360,6 +1360,27 @@
   .rs-stage::before { animation: none; }
   .team-reel-card { transition: opacity 0.2s; }
 }
+
+/* Keep the team reel card and its swipe controls inside the mobile layout. */
+@media (max-width: 600px) {
+  .reels {
+    --reel-card-h: min(500px, 62svh);
+    overflow: hidden;
+    padding-block: 48px 56px;
+  }
+  .reels-grid { min-width: 0; gap: 12px; }
+  .rs-stage {
+    width: min(100%, calc(var(--reel-card-w) + 20px));
+    height: calc(var(--reel-card-h) + 68px);
+    overflow: visible;
+  }
+  .team-reels-wrapper {
+    height: calc(var(--reel-card-h) + 68px);
+    padding-top: 0;
+  }
+  .team-reels { flex: none; }
+  .team-reels-arrow { bottom: 0; }
+}
 /* ---------- stage ---------- */
 
 .team-reels-wrapper {
@@ -1674,6 +1695,18 @@
 /* the photo zoom would fight the video, so turn it off while playing */
 .team-reel-card.is-playing.active:hover > img {
   transform: none;
+}
+
+@media (max-width: 600px) {
+  .reels { --reel-card-h: min(500px, 62svh); }
+  .rs-stage {
+    width: min(100%, calc(var(--reel-card-w) + 20px));
+    height: calc(var(--reel-card-h) + 68px);
+  }
+  .team-reels-wrapper {
+    height: calc(var(--reel-card-h) + 68px);
+    padding-top: 0;
+  }
 }
       .form {
         display: grid;
@@ -2378,4 +2411,16 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .brand-card .fc-brick { transition: none; }
+}
+
+@media (max-width: 600px) {
+  .reels { --reel-card-h: min(500px, 62svh); }
+  .rs-stage {
+    width: min(100%, calc(var(--reel-card-w) + 20px));
+    height: calc(var(--reel-card-h) + 68px);
+  }
+  .team-reels-wrapper {
+    height: calc(var(--reel-card-h) + 68px);
+    padding-top: 0;
+  }
 }

@@ -22,6 +22,7 @@ gsap.registerPlugin(ScrollTrigger);
           n: "Dubai",
           c: "United Arab Emirates",
           rg: "Arabian Peninsula",
+          poster: "./assets/conference-gallery/dubai/poster.jpg",
           lat: 25.2,
           lon: 55.27,
           r: [24, 50],
@@ -31,6 +32,7 @@ gsap.registerPlugin(ScrollTrigger);
           n: "Las Vegas",
           c: "United States",
           rg: "North America",
+          poster: "./assets/conference-gallery/lasVegas/poster.jpg",
           lat: 36.17,
           lon: -115.14,
           r: [30, -90],
@@ -40,6 +42,7 @@ gsap.registerPlugin(ScrollTrigger);
           n: "California",
           c: "United States",
           rg: "North America",
+          poster: "./assets/conference-gallery/california/poster.jpg",
           lat: 36.78,
           lon: -119.42,
           r: [40, -122],
@@ -442,7 +445,7 @@ gsap.registerPlugin(ScrollTrigger);
                 trigger: "#intro",
                 start: "top top",
                 end: "bottom bottom",
-                scrub: 1.1,
+                scrub: 0.18,
                 onLeaveBack: restoreIntro,
                 invalidateOnRefresh: true,
               },
@@ -497,7 +500,7 @@ gsap.registerPlugin(ScrollTrigger);
               .to("#c3", { opacity: 0, duration: 0.3 }, 3.1)
               .to(
                 "#veil",
-                { backgroundColor: "#f7f5f0", color: "#000", duration: 0.6 },
+                { backgroundColor: "rgba(5, 7, 15, 0.18)", color: "#fff", duration: 0.6 },
                 3.6,
               )
               .to(st, { ca: 0, pin: 0, duration: 0.3 }, 3.6);
@@ -505,6 +508,11 @@ gsap.registerPlugin(ScrollTrigger);
           function render() {}
           function choose(i) {
             const L = LOCS[i];
+            const veil = $("#veil");
+            veil.style.backgroundImage = `linear-gradient(180deg, rgba(5,7,15,.12), rgba(5,7,15,.38)), url("${L.poster}")`;
+            veil.style.backgroundSize = "cover";
+            veil.style.backgroundPosition = "center";
+            veil.innerHTML = `<div class="veil-title"><span>STROOMVERSE · ${L.y}</span><b>${L.n}</b></div>`;
             sel = i;
             window.__edit && window.__edit(i);
             document
@@ -535,7 +543,7 @@ gsap.registerPlugin(ScrollTrigger);
               z: cam.aspect < 1 ? 4.6 : 3.6,
               y: 0.2,
               sx: -0.7,
-              duration: RM ? 0.01 : 1.5,
+              duration: RM ? 0.01 : 0.8,
               ease: "power3.inOut",
               onComplete: () => {
                 render(L);

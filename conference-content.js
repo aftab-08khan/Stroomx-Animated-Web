@@ -57,13 +57,21 @@
 
 
     description:
-      "The 2024 StroomVerse archive celebrates the Bricks 4 Kidz franchise community and its shared commitment to learning, collaboration and business growth. Las Vegas is listed as the edition destination. The detailed programme, exact dates, venue and official event photographs still need to be confirmed.",
+      "The 2024 StroomVerse edition brought the Bricks 4 Kidz franchise network together in Las Vegas. This archive highlights the global community, shared learning and connections across the network. Exact dates, the venue and a confirmed programme are not available in the current archive.",
 
     highlights: [
-      "Las Vegas, Nevada, United States",
-      "2024 StroomVerse edition",
-      "Programme, dates and venue awaiting confirmation",
+      "Las Vegas, Nevada",
+      "2024 · United States",
+      "Franchise community and shared learning",
     ],
+    speaker: {
+      name: "Toni Harris Taylor",
+      role: "Keynote speaker",
+      detail: "Marketing, networking and building business relationships",
+      image: "https://images.leadconnectorhq.com/image/f_webp/q_80/r_1200/u_https%3A//assets.cdn.filesafe.space/DZtzENamPFiCJrbraFIG/media/66bda9fe08a2a1ff5f850133.png",
+      imageAlt: "Toni Harris Taylor",
+      source: "https://toniharristaylor.com/reviews",
+    },
 
     events: [
       [
@@ -102,13 +110,14 @@
       "./assets/conference-gallery/california/poster.jpg",
 
     description:
-      "The 2022 StroomVerse archive highlights the Bricks 4 Kidz franchise community and the connections built across its global network. California is listed as the edition destination. The detailed programme, exact dates, venue and official event photographs still need to be confirmed.",
+      "The 2022 StroomVerse edition brought the Bricks 4 Kidz franchise community together in California. This archive highlights the relationships and shared learning that connect the network across regions. Exact dates, the venue and a confirmed programme are not available in the current archive.",
 
     highlights: [
-      "California, United States",
-      "2022 StroomVerse edition",
-      "Programme, dates and venue awaiting confirmation",
+      "California",
+      "2022 · United States",
+      "Global community and shared learning",
     ],
+    speaker: null,
 
     events: [
       [
@@ -190,29 +199,40 @@
       } else {
         const copy = {
           schedule: [
-            "Edition programme",
-            "The detailed agenda for this edition has not yet been added to the archive.",
+            `${e.city} edition programme`,
+            `The StroomVerse ${e.year} archive places the franchise community in ${e.city}. Session times and a detailed agenda are not available in the current archive.`,
           ],
           speakers: [
-            "Speakers",
-            "The confirmed speaker list for this edition has not yet been added.",
+            e.speaker ? `Keynote speaker · ${e.city}` : "Speaker archive",
+            e.speaker
+              ? `${e.speaker.name joined StroomVerse ${e.year} in ${e.city} as a keynote speaker, sharing practical ideas on ${e.speaker.detail.toLowerCase()}.`
+              : `Confirmed speaker names and portraits for the ${e.city} ${e.year} edition are not available in the current archive.`,
           ],
           venue: [
             "Conference venue",
-            "The venue for this edition has not yet been confirmed in this archive.",
+            `The conference venue for the ${e.city} ${e.year} edition has not been confirmed in the current archive.`,
           ],
           hotel: [
             "Stay in " + e.city,
-            "Hotel arrangements for this past edition are not available in this archive.",
+            `Hotel and travel arrangements for the ${e.city} edition are not available in this archive.`,
           ],
           faq: [
             "Edition information",
-            "For questions about this past edition, contact the StroomX team.",
+            `This archive covers StroomVerse ${e.year} in ${e.city}. Contact the StroomX team for additional historical event information.`,
           ],
         };
         Object.entries(copy).forEach(([id, [title, text]]) => {
+          const speakerCard = id === "speakers"
+            ? e.speaker
+              ? `<article class="archive-speaker"><img src="${e.speaker.image}" alt="${e.speaker.imageAlt}" loading="lazy"><div class="speaker-glass"><span>${e.speaker.role} · ${e.year}</span><b>${e.speaker.name}</b><small>${e.speaker.detail}</small><a href="${e.speaker.source}" target="_blank" rel="noopener">Speaker source ↗</a></div></article>`
+              : `<article class="archive-speaker is-placeholder"><img src="./assets/conference-gallery/keynotes/keynote.jpg" alt="Illustrative conference speaker image; not a California 2022 speaker portrait" loading="lazy"><div class="speaker-glass"><span>Illustrative image</span><b>Speaker details unavailable</b><small>Names and confirmed portraits for this edition have not been found in the archive.</small></div></article>`
+            : "";
           $("#" + id).innerHTML =
-            `<div class="wrap"><div class="eyebrow">${e.city} ${e.year}</div><h2>${title}</h2><p class="archive-note">${text}</p></div>`;
+            `<div class="wrap archive-section"><div class="eyebrow">StroomVerse archive · ${e.year}</div><h2>${title}</h2><p class="lead">${text}</p>${speakerCard}<div class="archive-facts">${[
+              ["Edition", `${e.city} · ${e.year}`],
+              ["Community", "Bricks 4 Kidz franchise network"],
+              ["Archive status", id === "schedule" ? "Detailed agenda unavailable" : id === "speakers" ? "Confirmed speaker list unavailable" : id === "venue" ? "Venue details unavailable" : id === "hotel" ? "Travel and hotel details unavailable" : "Ask the StroomX team"],
+            ].map(([label, value]) => `<article><span>${label}</span><b>${value}</b></article>`).join("")}</div></div>`;
         });
       }
       $("#rt").textContent = `StroomVerse ${e.year} · ${e.city}`;

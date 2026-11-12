@@ -1639,21 +1639,18 @@ const TESTVID = "data:";
           ],
         ];
         const SPK = [
-          [
-            "Ford Saeks",
-            "Hall-of-Fame keynote: growth, AI and local marketing",
-          ],
-          ["Chris Rego", "Opening keynote"],
-          ["Shahed Bagwan", "Curriculum, R&D and drone workshop"],
-          ["Jerry Parchman", "Resource Trade Tower, customer success"],
-          ["Ajmal Alavi", "Technology keynote and workshop"],
-          ["Nishant Verma", "Master franchisor and marketing keynotes"],
-          ["Lamar VanDusen", "Building the future of your business"],
-          ["Dave Nicolanti", "National brand to local enrollments"],
-          ["Emmanuel Rego", "The Stroom Bridge Challenge"],
-          ["Tim Walker", "Camps: tips, tricks and insights"],
-          ["Jennie Morris", "You’re judged by your P&L"],
-          ["Sue Pamboris", "Peer perspectives"],
+          ["Ford Saeks", "Hall-of-Fame keynote: growth, AI and local marketing", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          ["Chris Rego", "Opening keynote", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          ["Shahed Bagwan", "Curriculum, R&D and drone workshop", "./assets/teams/Shahed.jpeg"],
+          ["Jerry Parchman", "Resource Trade Tower, customer success", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          ["Ajmal Alavi", "Technology keynote and workshop", "./assets/teams/Ajmal.jpeg"],
+          ["Nishant Verma", "Master franchisor and marketing keynotes", "./assets/teams/Nishant-Verma.jpg"],
+          ["Lamar VanDusen", "Building the future of your business", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          ["Dave Nicolanti", "National brand to local enrollments", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          ["Emmanuel Rego", "The Stroom Bridge Challenge", "./assets/teams/Emmanuel-Rego-CEO-black.jpg"],
+          ["Tim Walker", "Camps: tips, tricks and insights", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          ["Jennie Morris", "You’re judged by your P&L", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          ["Sue Pamboris", "Peer perspectives", "./assets/conference-gallery/keynotes/keynote.jpg", true],
         ];
         const INFO = [
           [
@@ -1747,10 +1744,7 @@ const TESTVID = "data:";
           draw(0);
           $("#spk").innerHTML = SPK.map(
             (s) =>
-              `<div class="rvl card sp"><i>${s[0]
-                .split(" ")
-                .map((w) => w[0])
-                .join("")}</i><b>${s[0]}</b><small>${s[1]}</small></div>`,
+              `<article class="rvl card sp${s[3] ? " has-illustrative-photo" : ""}"><img src="${s[2]}" alt="${s[3] ? `Illustrative conference speaker image for ${s[0]}` : `Speaker portrait of ${s[0]}`}" loading="lazy"><div class="speaker-glass">${s[3] ? '<span>Illustrative image</span>' : ""}<b>${s[0]}</b><small>${s[1]}</small></div></article>`,
           ).join("");
           const ci = (s) =>
             `<div class="rvl card"><h3>${s[0]}</h3><p>${s[1]}</p></div>`;
