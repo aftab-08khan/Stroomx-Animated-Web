@@ -599,8 +599,8 @@
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-  display: flex;
-  align-items: center;
+  text-align: center;
+  
 }
 
 .reel video {
@@ -624,17 +624,16 @@
   position: relative;
   z-index: 2;
   color: white;
+  text-align: left;
 }
       .reel .eyebrow {
         color: #ffffffcc;
       }
       .reel h2 {
         font-size: clamp(2.4rem, 6vw, 5.2rem);
-        max-width: 14ch;
         margin: 16px 0 18px;
       }
       .reel p {
-        max-width: 480px;
         color: #e4e5ea;
       }
       /* stats */
