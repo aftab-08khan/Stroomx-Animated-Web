@@ -640,7 +640,7 @@
       }
       .reel-film-play {
         position: absolute;
-        z-index: 1;
+        z-index: 3;
         left: 50%;
         top: 50%;
         display: inline-flex;
@@ -2689,7 +2689,7 @@
         position: absolute;
         left: 0;
         right: 0;
-        bottom: 6vh;
+        bottom: 4vh;
         text-align: center;
         padding: 0 5vw;
       }
@@ -2733,6 +2733,7 @@
         grid-template-columns: repeat(3, minmax(0, 230px));
         gap: 12px;
         justify-content: center;
+        padding-bottom: 6vh;
       }
       .loc {
         position: relative;
@@ -3316,15 +3317,31 @@
         }
       }
       .reel {
-        min-height: clamp(440px, 68svh, 680px);
+        min-height: clamp(560px, 82svh, 860px);
         padding-block: clamp(64px, 8vw, 100px);
         background:
           radial-gradient(60% 90% at 90% 20%, #ff400020, transparent 70%),
           var(--ink);
       }
+      .event-gallery-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+        align-items: stretch;
+        gap: clamp(16px, 3vw, 32px);
+      }
+      .event-gallery-layout > .reel {
+        min-width: 0;
+        border-radius: 22px;
+      }
 
       @media (max-width: 600px) {
         #intro { height: 145vh; }
+      }
+
+      @media (max-width: 800px) {
+        .ihero {
+          bottom: max(3.5vh, 28px);
+        }
       }
     
       .event-gallery-head {
@@ -3506,6 +3523,14 @@
         .destination-photo,
         .destination-photo img { min-height: 260px; }
         .archive-note { min-height: 220px; }
+      }
+      @media (max-width: 900px) {
+        .event-gallery-layout {
+          grid-template-columns: minmax(0, 1fr);
+        }
+        .event-gallery-layout > .reel {
+          min-height: clamp(440px, 65svh, 640px);
+        }
       }
       @media (prefers-reduced-motion: reduce) {
         .sec[data-w]::before

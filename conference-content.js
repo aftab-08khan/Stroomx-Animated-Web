@@ -20,7 +20,7 @@
       "Keynotes, workshops and city experiences",
     ],
 
-    events: [
+    gallery: [
       [
         "Keynotes",
         "Illustrative image · conference speaker on stage.",
@@ -73,7 +73,7 @@
       source: "https://toniharristaylor.com/reviews",
     },
 
-    events: [
+    gallery: [
       [
         "Conference sessions",
         "Illustrative conference image · replace with an official Las Vegas event photograph.",
@@ -119,7 +119,7 @@
     ],
     speaker: null,
 
-    events: [
+    gallery: [
       [
         "Conference sessions",
         "Illustrative conference image · replace with an official California event photograph.",
@@ -167,6 +167,10 @@
     const gallery = $("#gallery .wrap");
     gallery.innerHTML =
       '<div class="eyebrow">The destination</div><h2 id="destination-title"></h2><p class="lead">Explore the destination, then browse moments from each edition.</p><div class="destination-gallery" id="destination-photos"></div><div class="event-gallery-head" id="event-gallery-head"><div><div class="eyebrow">Event gallery</div><h3 id="event-gallery-title"></h3></div><p id="event-gallery-note"></p></div><div class="event-stack" id="event-stack" aria-label="Conference event photo gallery"></div>';
+    const galleryLayout = document.createElement("div");
+    galleryLayout.className = "event-gallery-layout";
+    galleryLayout.append($("#event-stack"), $("#reel"));
+    gallery.append(galleryLayout);
     let current = -1;
     const apply = (i) => {
       if (!Number.isInteger(i) || !editions[i]) return;
@@ -205,7 +209,7 @@
           speakers: [
             e.speaker ? `Keynote speaker · ${e.city}` : "Speaker archive",
             e.speaker
-              ? `${e.speaker.name joined StroomVerse ${e.year} in ${e.city} as a keynote speaker, sharing practical ideas on ${e.speaker.detail.toLowerCase()}.`
+              ? `${e.speaker.name} joined StroomVerse ${e.year} in ${e.city} as a keynote speaker, sharing practical ideas on ${e.speaker.detail.toLowerCase()}.`
               : `Confirmed speaker names and portraits for the ${e.city} ${e.year} edition are not available in the current archive.`,
           ],
           venue: [
@@ -239,6 +243,7 @@
       const reelVideo = $("#rv");
       const filmPlay = $("#film-play");
       reelVideo.pause();
+      reelVideo.muted = false;
       reelVideo.removeAttribute("src");
       reelVideo.replaceChildren();
       reelVideo.dataset.filmSrc = e.reelVideo || "";
@@ -277,20 +282,20 @@
     <p>Looking for event photos? <a href="mailto:support@stroomx.com">Contact the StroomX team ↗</a></p>
 </div>`;
       const eventStack = $("#event-stack");
-      const events = e.events || [
+      const galleryItems = e.gallery || [
         [
           `${e.city} destination`,
           `A destination view of ${e.city}, ${e.country}. Official event photos are not yet available.`,
           e.photo,
         ],
       ];
-      $("#event-gallery-title").textContent = e.events
+      $("#event-gallery-title").textContent = e.gallery
         ? `${e.city} ${e.year} · moments`
         : `${e.city} ${e.year} · destination`;
-      // $("#event-gallery-note").textContent = e.events
+      // $("#event-gallery-note").textContent = e.gallery
       //   ? "Illustrative event imagery; replace with official photos when available."
       //   : "Destination imagery for this edition; official event photos are not yet available.";
-      eventStack.innerHTML = events
+      eventStack.innerHTML = galleryItems
         .map(
           ([title, detail, image], j) =>
             `<article class="event-photo-card" style="--card-index:${j}"><div class="event-photo-placeholder">${image ? `<img class="event-photo-image" src="${image}" alt="Illustrative reference for ${title}; not a StroomVerse event photograph" loading="lazy">` : `<span class="event-photo-mark">0${j + 1}</span><span class="event-photo-label">Photo coming soon</span><span class="event-photo-orbit" aria-hidden="true"></span>`}</div><div class="event-photo-caption"><span>${e.city} · ${e.year}</span><h4>${title}</h4><p>${detail}</p></div></article>`,

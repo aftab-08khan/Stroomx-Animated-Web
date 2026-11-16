@@ -1372,13 +1372,10 @@ const TESTVID = "data:";
             );
             v.load();
           }
-          v.muted = true;
           new IntersectionObserver(
             (e) =>
               e.forEach((x) =>
-                x.isIntersecting && !reduced
-                  ? v.play().catch(() => {})
-                  : v.pause(),
+                !x.isIntersecting && v.pause(),
               ),
             { threshold: 0.15 },
           ).observe(v);
@@ -1640,17 +1637,16 @@ const TESTVID = "data:";
         ];
         const SPK = [
           ["Ford Saeks", "Hall-of-Fame keynote: growth, AI and local marketing", "./assets/conference-gallery/keynotes/keynote.jpg", true],
-          ["Chris Rego", "Opening keynote", "./assets/conference-gallery/keynotes/keynote.jpg", true],
           ["Shahed Bagwan", "Curriculum, R&D and drone workshop", "./assets/teams/Shahed.jpeg"],
-          ["Jerry Parchman", "Resource Trade Tower, customer success", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          ["Jerry Parchman", "Resource Trade Tower, customer success", "./assets/conference-gallery/dubai/speakers/jerry-parchman.jpeg", true],
           ["Ajmal Alavi", "Technology keynote and workshop", "./assets/teams/Ajmal.jpeg"],
           ["Nishant Verma", "Master franchisor and marketing keynotes", "./assets/teams/Nishant-Verma.jpg"],
           ["Lamar VanDusen", "Building the future of your business", "./assets/conference-gallery/keynotes/keynote.jpg", true],
           ["Dave Nicolanti", "National brand to local enrollments", "./assets/conference-gallery/keynotes/keynote.jpg", true],
           ["Emmanuel Rego", "The Stroom Bridge Challenge", "./assets/teams/Emmanuel-Rego-CEO-black.jpg"],
           ["Tim Walker", "Camps: tips, tricks and insights", "./assets/conference-gallery/keynotes/keynote.jpg", true],
-          ["Jennie Morris", "You’re judged by your P&L", "./assets/conference-gallery/keynotes/keynote.jpg", true],
-          ["Sue Pamboris", "Peer perspectives", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          ["Jennie Morris", "You’re judged by your P&L", "./assets/conference-gallery/dubai/speakers/jennie.jpg", true],
+          ["Sue Pamboris", "Peer perspectives", "./assets/conference-gallery/dubai/speakers/sue.jpg", true],
         ];
         const INFO = [
           [

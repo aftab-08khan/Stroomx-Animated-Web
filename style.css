@@ -1635,7 +1635,7 @@
   width: 25%;
   height: 100%;
   border-radius: inherit;
-  background: var(--reel-accent);
+  background: var(--o);
   transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -2422,5 +2422,84 @@
   .team-reels-wrapper {
     height: calc(var(--reel-card-h) + 68px);
     padding-top: 0;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .reels {
+    --reel-card-w: min(420px, 68vw);
+    --reel-card-h: min(580px, 70svh);
+    padding-block: clamp(64px, 8vw, 96px);
+  }
+  .reels-grid { gap: 20px; }
+  .reels-info { max-width: 680px; }
+  .reels-info h2 {
+    max-width: 14ch;
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  .reels-lead { max-width: 56ch; }
+  .reels-list {
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+  }
+  .reels-list li { flex: 0 0 auto; }
+  .rs-stage {
+    width: min(100%, calc(var(--reel-card-w) + 32px));
+    height: calc(var(--reel-card-h) + 76px);
+  }
+}
+
+@media (max-width: 600px) {
+  .reels {
+    --reel-card-w: min(380px, calc(100vw - 32px));
+    --reel-card-h: min(560px, 68svh);
+    padding-block: 48px 64px;
+  }
+  .reels-grid { gap: 18px; }
+  .reels-info h2 {
+    max-width: 12ch;
+    font-size: clamp(2rem, 9vw, 2.7rem);
+  }
+  .reels-list {
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: auto;
+    padding-block: 4px 10px;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+  }
+  .reels-list::-webkit-scrollbar { display: none; }
+  .reels-list li {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+  .reels-list button { min-height: 44px; }
+  .rs-stage {
+    width: min(100%, calc(var(--reel-card-w) + 24px));
+    height: calc(var(--reel-card-h) + 80px);
+  }
+  .team-reel-card { border-radius: 24px; }
+  .team-reel-content { left: 20px; right: 68px; bottom: 22px; }
+  .team-reel-content h3 { font-size: clamp(28px, 8vw, 34px); }
+  .team-reel-content p { font-size: 14px; }
+  .team-reel-action { width: 42px; height: 42px; }
+}
+
+@media (max-height: 560px) and (max-width: 900px) {
+  .reels { --reel-card-h: min(420px, 66svh); }
+}
+
+@media (max-width: 900px) {
+  .reels-ctrl { display: flex; }
+  .reels-ctrl .reels-arrow { display: none; }
+  .team-reels-progress {
+    width: min(100%, 260px);
+    max-width: 260px;
+    margin-left: 0;
   }
 }
