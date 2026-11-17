@@ -7,6 +7,8 @@
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <title>StroomVerse — the StroomX conferences</title>
+    <link rel="icon" type="./assets/favicon.ico" href="./assets/favicon.ico">
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -147,9 +149,7 @@
         ><a href="#hotel">Hotel</a><a href="#gallery">Gallery</a
         ><a href="#faq">FAQ</a
         ><a
-          href="https://stroomx.com/conference/sponsor"
-          target="_blank"
-          rel="noopener"
+          href="./sponsor.html"
           >Sponsorships</a
         >
       </div>
@@ -376,18 +376,24 @@
         </div>
       </section>
       <section class="reel" id="reel">
-     <video
-  id="rv"
-  loop
-  playsinline
-  controls
-  poster="./assets/conference-gallery/dubai/dubai-night.jpg"
-  preload="none"
-  aria-label="StroomVerse conference film"
-></video>
-        <button class="reel-film-play" id="film-play" type="button" hidden>
-          <span aria-hidden="true">▶</span><b>Play conference film</b>
-        </button>
+        <div class="film-stage" id="film-stage">
+          <video
+            id="rv"
+            loop
+            playsinline
+            controls
+            poster="./assets/conference-gallery/dubai/dubai-night.jpg"
+            preload="none"
+            aria-label="StroomVerse conference film"
+          ></video>
+          <button class="reel-film-play" id="film-play" type="button" hidden>
+            <span aria-hidden="true">▶</span><b>Play conference film</b>
+          </button>
+          <div class="film-unavailable" id="film-unavailable" hidden>
+            <span>Film archive</span>
+            <b>No film available for this edition</b>
+          </div>
+        </div>
 
         <div class="wrap">
           <div class="eyebrow">Conference films</div>
@@ -418,9 +424,7 @@
             <p>Questions about the conference? Our team is happy to help.</p>
             <a
               class="pill"
-              href="https://stroomx.com/conference/sponsor"
-              target="_blank"
-              rel="noopener"
+              href="./sponsor.html"
               >Become a sponsor</a
             >
             <a class="pill" style="background: var(--o)" href="tel:18887870069"

@@ -3,7 +3,7 @@
    Loaded from app.js as an on-demand module when the reels section is near view.
    ========================================================= */
 
-/* ---------- 1. card stack (drag / tilt / spotlight) ---------- */
+/* ---------- 1. card stack (button navigation / tilt / spotlight) ---------- */
 (function () {
   "use strict";
 
@@ -23,7 +23,6 @@
 
     var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var ROT = [0, -6, 5, -3, 4, -5, 3]; /* resting angle per stack position */
-    var SEND_DISTANCE = 110;            /* px you must drag to send a card to the back */
     var order = cards.map(function (_, i) { return i; }); /* order[0] = top card */
     var onScreen = true;
     var items = [];
@@ -143,44 +142,8 @@
       else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); step(-1); }
     });
 
-    /* ---------- drag the top card ---------- */
-
-    var drag = null;
-
-    stack.addEventListener("pointerdown", function (e) {
-      var card = e.target.closest(".team-reel-card");
-      if (!card || !card.classList.contains("is-top")) return;
-      if (e.target.closest(".team-reel-action")) return;
-      if (e.pointerType === "mouse" && e.button !== 0) return;
-      drag = { id: e.pointerId, x: e.clientX, y: e.clientY, dx: 0, dy: 0, axis: null, card: card };
-      card.classList.add("is-dragging");
-      card.classList.remove("is-tilting");
-      card.style.setProperty("--tx", "0deg");
-      card.style.setProperty("--ty", "0deg");
-      try { card.setPointerCapture(e.pointerId); } catch (err) {}
-    });
-
+    /* ---------- mouse hover tilt; card navigation uses the name pills ---------- */
     stack.addEventListener("pointermove", function (e) {
-      if (drag && e.pointerId === drag.id) {
-        drag.dx = e.clientX - drag.x;
-        drag.dy = e.clientY - drag.y;
-        if (!drag.axis && Math.hypot(drag.dx, drag.dy) > 8) {
-          drag.axis = Math.abs(drag.dx) > Math.abs(drag.dy) * 1.15 ? "x" : "y";
-          if (drag.axis === "y") {
-            var verticalCard = drag.card;
-            drag = null;
-            verticalCard.classList.remove("is-dragging");
-            layout();
-            return;
-          }
-        }
-        if (drag.axis !== "x") return;
-        drag.card.style.setProperty("--dx", drag.dx + "px");
-        drag.card.style.setProperty("--dy", drag.dy + "px");
-        drag.card.style.setProperty("--r", drag.dx * 0.06 + "deg");
-        return;
-      }
-
       /* hover: 3D tilt + spotlight on the top card (mouse only) */
       if (e.pointerType !== "mouse" || reduceMotion) return;
       var card = stack.querySelector(".is-top");
@@ -196,19 +159,7 @@
       card.style.setProperty("--my", py * 100 + "%");
     });
 
-    function endDrag(e, cancelled) {
-      if (!drag || e.pointerId !== drag.id) return;
-      var d = drag;
-      drag = null;
-      d.card.classList.remove("is-dragging");
-      if (!cancelled && d.axis === "x" && Math.abs(d.dx) > SEND_DISTANCE) step(d.dx < 0 ? 1 : -1);
-      else layout(); /* snap back */
-    }
-    stack.addEventListener("pointerup", function (e) { endDrag(e, false); });
-    stack.addEventListener("pointercancel", function (e) { endDrag(e, true); });
-
     stack.addEventListener("pointerleave", function () {
-      if (drag) return;
       var card = stack.querySelector(".is-top");
       if (!card) return;
       card.classList.remove("is-tilting");

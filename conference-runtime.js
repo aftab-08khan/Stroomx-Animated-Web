@@ -1636,15 +1636,15 @@ const TESTVID = "data:";
           ],
         ];
         const SPK = [
-          ["Ford Saeks", "Hall-of-Fame keynote: growth, AI and local marketing", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          // ["Ford Saeks", "Hall-of-Fame keynote: growth, AI and local marketing", "./assets/conference-gallery/keynotes/keynote.jpg", true],
           ["Shahed Bagwan", "Curriculum, R&D and drone workshop", "./assets/teams/Shahed.jpeg"],
           ["Jerry Parchman", "Resource Trade Tower, customer success", "./assets/conference-gallery/dubai/speakers/jerry-parchman.jpeg", true],
           ["Ajmal Alavi", "Technology keynote and workshop", "./assets/teams/Ajmal.jpeg"],
           ["Nishant Verma", "Master franchisor and marketing keynotes", "./assets/teams/Nishant-Verma.jpg"],
-          ["Lamar VanDusen", "Building the future of your business", "./assets/conference-gallery/keynotes/keynote.jpg", true],
-          ["Dave Nicolanti", "National brand to local enrollments", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          // ["Lamar VanDusen", "Building the future of your business", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          // ["Dave Nicolanti", "National brand to local enrollments", "./assets/conference-gallery/keynotes/keynote.jpg", true],
           ["Emmanuel Rego", "The Stroom Bridge Challenge", "./assets/teams/Emmanuel-Rego-CEO-black.jpg"],
-          ["Tim Walker", "Camps: tips, tricks and insights", "./assets/conference-gallery/keynotes/keynote.jpg", true],
+          // ["Tim Walker", "Camps: tips, tricks and insights", "./assets/conference-gallery/keynotes/keynote.jpg", true],
           ["Jennie Morris", "You’re judged by your P&L", "./assets/conference-gallery/dubai/speakers/jennie.jpg", true],
           ["Sue Pamboris", "Peer perspectives", "./assets/conference-gallery/dubai/speakers/sue.jpg", true],
         ];
@@ -1740,7 +1740,7 @@ const TESTVID = "data:";
           draw(0);
           $("#spk").innerHTML = SPK.map(
             (s) =>
-              `<article class="rvl card sp${s[3] ? " has-illustrative-photo" : ""}"><img src="${s[2]}" alt="${s[3] ? `Illustrative conference speaker image for ${s[0]}` : `Speaker portrait of ${s[0]}`}" loading="lazy"><div class="speaker-glass">${s[3] ? '<span>Illustrative image</span>' : ""}<b>${s[0]}</b><small>${s[1]}</small></div></article>`,
+              `<article class="rvl card sp${s[3] ? " has-illustrative-photo" : ""}"><img src="${s[2]}" alt="${s[3] ? `Illustrative conference speaker image for ${s[0]}` : `Speaker portrait of ${s[0]}`}" loading="lazy"><div class="speaker-glass"><b>${s[0]}</b><small>${s[1]}</small></div></article>`,
           ).join("");
           const ci = (s) =>
             `<div class="rvl card"><h3>${s[0]}</h3><p>${s[1]}</p></div>`;
@@ -1748,8 +1748,14 @@ const TESTVID = "data:";
           $("#hinfo").innerHTML = [INFO[1], INFO[3]].map(ci).join("");
           $("#faqList").innerHTML = FAQ.map(
             (s) =>
-              `<details class="rvl"><summary>${s[0]}</summary><p>${s[1]}</p></details>`,
+              `<details class="rvl" name="conference-faq"><summary>${s[0]}</summary><p>${s[1]}</p></details>`,
           ).join("");
+          const faqItems = $$("#faqList details");
+          faqItems.forEach((item) => item.addEventListener("toggle", () => {
+            if (item.open) faqItems.forEach((other) => {
+              if (other !== item && other.open) other.open = false;
+            });
+          }));
           $$(
             ".sec .eyebrow,.sec h2,.sec .lead,.stats h2,.stats .eyebrow",
           ).forEach((n) => n.classList.add("rvl"));

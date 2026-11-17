@@ -7,7 +7,7 @@
     city: "Dubai",
     country: "United Arab Emirates",
     year: "2026",
-    reelVideo: "./Highlight.mp4",
+    reelVideo: "https://res.cloudinary.com/py5ubuyl/video/upload/v1794899461/Highlight_2_1.mp4",
     file: "Dubai skyline - Dubai, UAE.jpg",
     photo: "./assets/conference-gallery/dubai/poster.jpg",
 
@@ -49,6 +49,7 @@
     city: "Las Vegas",
     country: "United States",
     year: "2024",
+    reelVideo: "https://res.cloudinary.com/py5ubuyl/video/upload/v1794901467/Bricks4Kidz_ver3_1_1.mp4",
 
     file: "The StripLas Vegas Strip.jpg",
 
@@ -166,11 +167,7 @@
     // $("#site").prepend(switcher);
     const gallery = $("#gallery .wrap");
     gallery.innerHTML =
-      '<div class="eyebrow">The destination</div><h2 id="destination-title"></h2><p class="lead">Explore the destination, then browse moments from each edition.</p><div class="destination-gallery" id="destination-photos"></div><div class="event-gallery-head" id="event-gallery-head"><div><div class="eyebrow">Event gallery</div><h3 id="event-gallery-title"></h3></div><p id="event-gallery-note"></p></div><div class="event-stack" id="event-stack" aria-label="Conference event photo gallery"></div>';
-    const galleryLayout = document.createElement("div");
-    galleryLayout.className = "event-gallery-layout";
-    galleryLayout.append($("#event-stack"), $("#reel"));
-    gallery.append(galleryLayout);
+      '<div class="eyebrow">Destination</div><h2 id="destination-title"></h2><p class="lead">Explore the host city, then browse moments from each edition.</p><div class="destination-gallery" id="destination-photos"></div><div class="event-gallery-head" id="event-gallery-head"><div><div class="eyebrow">Edition highlights</div><h3 id="event-gallery-title"></h3></div><p id="event-gallery-note"></p></div><div class="event-stack" id="event-stack" aria-label="Conference event photo gallery"></div>';
     let current = -1;
     const apply = (i) => {
       if (!Number.isInteger(i) || !editions[i]) return;
@@ -253,15 +250,18 @@
         reelVideo.hidden = false;
         reelVideo.load();
         filmPlay.hidden = false;
+        $("#film-unavailable").hidden = true;
         filmPlay.querySelector("b").textContent = `Play ${e.city} conference film`;
       } else {
         reelVideo.hidden = true;
         reelVideo.load();
         filmPlay.hidden = true;
+        $("#film-unavailable").hidden = false;
+        $("#film-unavailable").style.backgroundImage = `linear-gradient(180deg, #10121620, #101216b8), url("${e.photo}")`;
       }
 
       $("#rp").textContent = e.reelVideo
-        ? e.description
+        ? `A highlight film from StroomVerse ${e.year} in ${e.city}.`
         : `${e.description} A conference film is not available for this edition yet.`;
 
       $("#reel .eyebrow").textContent = e.reelVideo
@@ -292,9 +292,7 @@
       $("#event-gallery-title").textContent = e.gallery
         ? `${e.city} ${e.year} · moments`
         : `${e.city} ${e.year} · destination`;
-      // $("#event-gallery-note").textContent = e.gallery
-      //   ? "Illustrative event imagery; replace with official photos when available."
-      //   : "Destination imagery for this edition; official event photos are not yet available.";
+
       eventStack.innerHTML = galleryItems
         .map(
           ([title, detail, image], j) =>
